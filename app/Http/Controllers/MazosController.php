@@ -108,8 +108,6 @@ class MazosController extends Controller
         $mazo->MAZ_NOMBRE = $request['MAZ_NOMBRE'];
         $mazo->FTO_ID = $request['FTO_ID'];
         $mazo->save();
-        
-        
         return redirect::to('/mazos');     
     }
 
