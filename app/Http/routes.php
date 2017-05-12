@@ -15,5 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('tiendas', 'tiendasController');
-Route::resource('wstest', 'SoapController@WsConsulta');
+Route::resource('byformat', 'MazosController@index');
+Route::resource('listadomazos', 'MazosController@backendIndex');
+Route::resource('mazos', 'MazosController');
+
+
+
+
+
