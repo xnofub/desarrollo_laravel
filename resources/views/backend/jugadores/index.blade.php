@@ -1,14 +1,10 @@
 @extends('layouts.master')
-@section('title', 'Mazos')
+@section('title', 'Jugadores')
 @section('content')
 
-@if(Session::has('message'))
-<div class="alert alert-success">
-    {{Session::get('message')}}
-</div>
-@endif
+
 <!-- <button type="button" class="btn btn-xs btn-success"><a href="{!!URL::to('/mazos/create')!!}" > AGREGAR </a> </button> -->
-{{link_to_route('mazos.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
+{{link_to_route('jugadores.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
 <div align="center">
         <table class="table">
             <tr >
@@ -18,20 +14,20 @@
                 <th colspan="2">Opciones</th>
             </tr>
 
-            @foreach($mazos as $m)
+            @foreach($jugadores as $j)
             
             <tr>
-                <td> {{ $m->MAZ_ID }}</td>
-                <td> {{ $m->MAZ_NOMBRE }}</td>
-                <td> {{ $m->formato->FTO_NOMBRE }}</td>
-                <td> {{link_to_route('mazos.edit', 'editar', $parameters = $m->MAZ_ID , $attributes = ['class'=>'btn btn-xs btn-warning'])}} </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td>  </td>
                 <td> </td>
             </tr>
             @endforeach         
         </table>
 
         <nav class="paginacion">
-            {!! $mazos->render() !!}
+            {!! $jugadores->render() !!}
         </nav>
 </div>
 
