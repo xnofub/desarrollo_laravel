@@ -4,16 +4,16 @@
 
 @include('layouts.error')
 
-{!! Form::model($mazo, array('route' => array('mazos.update', $mazo->MAZ_ID), 'method'=>'PUT', 'class' => 'form-horizontal editar', 'role'=>'form')) !!}
+{!! Form::open(['route' => 'mazos.store', 'method' => 'POST', 'class' => 'form-horizontal crear','role'=>'form']) !!}
 <div class="modal-header">
-    <h4 class="modal-title titulo_formulario" id="">EDITAR MAZO</h4>
+    <h4 class="modal-title titulo_formulario" id="">AGREGAR MAZO</h4>
 </div>
 <div class="modal-body">    
     @include('backend.mazos.form.mazos')
 </div>
 <div class="modal-footer">
     
-    <button type="submit" class="btn btn-primary btn_ok">Actualizar</button>
+    <button type="submit" class="btn btn-primary btn_ok">Enviar</button>
 </div>
 {!! Form::close() !!}
 

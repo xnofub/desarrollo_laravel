@@ -102,7 +102,7 @@ class MazosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MazosUpdateRequest $request, $id)
     {
         $mazo = Mazos::find($id);
         $mazo->MAZ_NOMBRE = $request['MAZ_NOMBRE'];

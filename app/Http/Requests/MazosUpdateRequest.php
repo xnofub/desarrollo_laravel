@@ -13,7 +13,7 @@ class MazosUpdateRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class MazosUpdateRequest extends Request
     public function rules()
     {
         return [
-            //
+            'MAZ_NOMBRE' => 'required|unique:mazos|max:50',
+            'FTO_ID' => 'required',
+        ];
+    }
+    
+    public function messages()
+    {
+        return [
+            'MAZ_NOMBRE.required' => 'Nombre es obligatorio',
+            'MAZ_NOMBRE.unique' => 'Nombre ya se encuentra registrado',
+            'MAZ_NOMBRE.max' => 'Nombre es demasiado largo',
+            'FTO_ID.required' => 'Debe seleccionar un formato',
         ];
     }
 }

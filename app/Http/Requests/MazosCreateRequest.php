@@ -31,13 +31,13 @@ class MazosCreateRequest extends Request
     
     
     public function messages()
-{
-    return [
-        'MAZ_NOMBRE.required' => 'Nombre es obligatorio',
-        'MAZ_NOMBRE.unique' => 'Nombre ya se encuentra registrado',
-        'MAZ_NOMBRE.max' => 'Nombre es demasiado largo',
-        'FTO_ID.required'  => 'Debe seleccionar un formato',
-    ];
-}
-    
+    {
+        return [
+            'MAZ_NOMBRE.required' => 'Nombre es obligatorio',
+            'MAZ_NOMBRE.unique' => 'Nombre ya se encuentra registrado',
+            'MAZ_NOMBRE.max' => 'Nombre es demasiado largo',
+            'FTO_ID.required' => 'Debe seleccionar un formato',
+        ];
+    }
+
 }
