@@ -37,10 +37,7 @@ class MazosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
-       
-        
+    {  
         $mazos = Mazos::paginate(10);
         $formatos = Formatos::lists('FTO_NOMBRE', 'FTO_ID');
         return view('backend.mazos.agregar', compact('mazos','formatos'));
@@ -66,7 +63,7 @@ class MazosController extends Controller
                 return $ex;
             }
             Session::flash('message','Mazo agregado con exito.');
-             return redirect::to('/mazos');  
+            return redirect::to('/mazos');  
     }
 
     /**

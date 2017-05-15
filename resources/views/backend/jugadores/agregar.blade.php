@@ -4,12 +4,12 @@
 
 @include('layouts.error')
 
-{!! Form::open(['route' => 'mazos.store', 'method' => 'POST', 'class' => 'form-horizontal crear','role'=>'form']) !!}
+{!! Form::open(['route' => 'jugadores.store', 'method' => 'POST', 'class' => 'form-horizontal crear','role'=>'form']) !!}
 <div class="modal-header">
-    <h4 class="modal-title titulo_formulario" id="">AGREGAR MAZO</h4>
+    <h4 class="modal-title titulo_formulario" id="">AGREGAR JUGADOR</h4>
 </div>
 <div class="modal-body">    
-    @include('backend.mazos.form.mazos')
+    @include('backend.jugadores.form.jugador')
 </div>
 <div class="modal-footer">
     
@@ -21,7 +21,9 @@
 @section('js')
 <script type="text/javascript">
     $(document).ready(function () {
-        
+        $('.datepicker').datepicker({
+            startDate: '-3d'
+        });
     });
 </script>
 @endsection

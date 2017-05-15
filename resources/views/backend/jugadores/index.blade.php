@@ -2,7 +2,7 @@
 @section('title', 'Jugadores')
 @section('content')
 
-
+@include('layouts.flash')
 <!-- <button type="button" class="btn btn-xs btn-success"><a href="{!!URL::to('/mazos/create')!!}" > AGREGAR </a> </button> -->
 {{link_to_route('jugadores.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
 <div align="center">
@@ -10,17 +10,16 @@
             <tr >
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Formato</th>
+                <th>DCI</th>
                 <th colspan="2">Opciones</th>
             </tr>
 
             @foreach($jugadores as $j)
-            
             <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td>  </td>
+                <td> {{$j->JGD_ID}} </td>
+                <td> {{$j->JGD_NOMBRE}}</td>
+                <td> {{$j->JGD_DCI}}</td>
+                <td> {{link_to_route('jugadores.edit', 'editar', $parameters = $j->JGD_ID , $attributes = ['class'=>'btn btn-xs btn-warning'])}}</td>
                 <td> </td>
             </tr>
             @endforeach         
@@ -35,6 +34,7 @@
 @section('js')
 <script type="text/javascript">
     $(document).ready(function () {
+        
         
     });
 </script>

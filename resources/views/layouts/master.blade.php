@@ -8,6 +8,7 @@
         {!! Html::style('assets/css/bootstrap.css') !!}
         {!! Html::style('assets/css/theme.css') !!}
         {!! Html::style('assets/css/ie10-viewport-bug-workaround.css') !!}
+        {!! Html::style('assets/css/bootstrap-datepicker.standalone.css') !!}
         <!-- Fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -59,5 +60,7 @@
         <!-- Scripts -->
         {!! Html::script('assets/js/jquery.min.js') !!}
         {!! Html::script('assets/js/bootstrap.min.js') !!}
+        {!! Html::script('assets/js/bootstrap-datepicker.js') !!}
+        @yield('js')
     </body>
 </html>
