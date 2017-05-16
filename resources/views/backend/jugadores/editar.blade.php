@@ -14,6 +14,11 @@
 <div class="modal-footer">
     
     <button type="submit" class="btn btn-primary btn_ok">Actualizar</button>
+    {!! Form::model($jugador, array('route' => array('jugadores.destroy', $jugador->JGD_ID), 'method'=>'DELETE', 'class' => 'form-horizontal editar', 'role'=>'form')) !!}
+    <button type="submit" class="btn btn-primary btn-danger">Eliminar</button>
+    {!! Form::close() !!}
+    
+    
 </div>
 {!! Form::close() !!}
 

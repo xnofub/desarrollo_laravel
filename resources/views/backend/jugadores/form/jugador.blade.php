@@ -13,7 +13,6 @@
          {!! Form::text('JGD_DCI',isset($jugador->JGD_DCI) ? $jugador->JGD_DCI : '', ['class' => 'form-control']) !!}
          </div>
     </div>
-    
     <!-- <div class="input-group date" data-provide="datepicker">
         <input type="text" class="form-control">
         <div class="input-group-addon">

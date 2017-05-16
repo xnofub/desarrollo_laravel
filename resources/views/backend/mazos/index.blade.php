@@ -3,6 +3,7 @@
 @section('content')
 
 @include('layouts.flash')
+
 <!-- <button type="button" class="btn btn-xs btn-success"><a href="{!!URL::to('/mazos/create')!!}" > AGREGAR </a> </button> -->
 {{link_to_route('mazos.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
 <div align="center">

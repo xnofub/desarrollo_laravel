@@ -4,29 +4,28 @@
 
 @include('layouts.flash')
 <!-- <button type="button" class="btn btn-xs btn-success"><a href="{!!URL::to('/mazos/create')!!}" > AGREGAR </a> </button> -->
-{{link_to_route('jugadores.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
+
+{{link_to_route('formatos.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
 <div align="center">
         <table class="table">
             <tr >
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>DCI</th>
+                <th>Formato</th>
                 <th colspan="2">Opciones</th>
             </tr>
 
-            @foreach($jugadores as $j)
+            @foreach($formatos as $f)
             <tr>
-                <td> {{$j->JGD_ID}} </td>
-                <td> {{$j->JGD_NOMBRE}}</td>
-                <td> {{$j->JGD_DCI}}</td>
-                <td> {{link_to_route('jugadores.edit', 'editar', $parameters = $j->JGD_ID , $attributes = ['class'=>'btn btn-xs btn-warning'])}}</td>
+                <td> {{$f->FTO_ID}} </td>
+                <td> {{$f->FTO_NOMBRE}} </td>
+                <td> </td>
                 <td> </td>
             </tr>
             @endforeach         
         </table>
 
         <nav class="paginacion">
-            {!! $jugadores->render() !!}
+            {!! $formatos->render() !!}
         </nav>
 </div>
 

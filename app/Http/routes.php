@@ -19,7 +19,7 @@ Route::resource('byformat', 'MazosController@index');
 Route::resource('listadomazos', 'MazosController@backendIndex');
 Route::resource('mazos', 'MazosController');
 Route::resource('jugadores', 'JugadoresController');
-
+Route::resource('formatos', 'FormatosController');
 
 
 

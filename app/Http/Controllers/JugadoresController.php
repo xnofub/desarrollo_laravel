@@ -104,5 +104,9 @@ class JugadoresController extends Controller
     public function destroy($id)
     {
         //
+        $jugador = Jugadores::destroy($id);
+        Session::flash('message','Jugador Borrado con exito.');
+        return redirect::to('/jugadores'); 
+        
     }
 }
