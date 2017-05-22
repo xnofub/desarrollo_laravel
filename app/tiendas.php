@@ -17,6 +17,8 @@ class Tiendas extends Model
                                );
     public $timestamps = false;
  
-    
+    public function ToEventos(){
+        return $this->hasMany('App\Eventos', 'TND_ID', 'TND_ID');
+    }
     
 }

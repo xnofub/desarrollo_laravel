@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Formatos;
+use App\Tiendas;
+use App\Eventos;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+
+
 
 class EventosController extends Controller
 {
@@ -16,6 +23,11 @@ class EventosController extends Controller
     public function index()
     {
         //
+        $eventos = Eventos::orderBy('EVN_FECHA')->paginate(10);
+        /*foreach ($eventos as $e){
+            dd($e->ToFormatos->FTO_NOMBRE);
+        }*/
+        return view('backend.eventos.index', compact('eventos'));
     }
 
     /**
@@ -26,6 +38,11 @@ class EventosController extends Controller
     public function create()
     {
         //
+        $eventos = array();
+        $formatos = Formatos::lists('FTO_NOMBRE', 'FTO_ID');
+        $tiendas = Tiendas::lists('TND_NOMBRE', 'TND_ID');
+        //$fecha  = date("d/m/Y");
+        return view('backend.eventos.agregar', compact('eventos','formatos','tiendas','fecha'));
     }
 
     /**
@@ -36,7 +53,22 @@ class EventosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        
+       $fecha = $request->FECHA;
+       list($dia, $mes, $año) = explode('/', $fecha);
+       $fecha = $año.$mes.$dia;
+       
+       $evento = new Eventos();
+       $evento->EVN_NOMBRE  = $request->EVN_NOMBRE; 
+       $evento->EVN_FECHA = $fecha;
+       $evento->FTO_ID = $request->FTO_ID; 
+       $evento->TND_ID = $request->TND_ID; 
+       $evento->save();
+       Session::flash('message','Evento '.$request->EVN_NOMBRE.'agregado con exito.');
+        return redirect::to('/eventos');
+       //dd($evento);
+        
     }
 
     /**

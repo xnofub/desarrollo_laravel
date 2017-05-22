@@ -43,8 +43,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="{!!URL::to('/mazos')!!}">Mazos</a></li>
                                     <li><a href="{!!URL::to('/jugadores')!!}">Jugadores</a></li>
-                                    <li><a href="#">Tiendas</a></li>
-                                    <li><a href="#">Eventos</a></li>
+                                    <li><a href="{!!URL::to('/eventos')!!}">Eventos</a></li>
                                     <li><a href="{!!URL::to('/formatos')!!}">Formatos</a></li>
                                 </ul>
                             </li>

@@ -20,4 +20,7 @@ class Formatos extends Model
         return $this->hasMany('App\Mazos', 'FTO_ID');
     }
     
+    public function ToEventos(){
+        return $this->hasMany('App\Eventos', 'FTO_ID', 'FTO_ID');
+    }
 }

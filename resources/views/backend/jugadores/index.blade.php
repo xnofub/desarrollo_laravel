@@ -20,7 +20,11 @@
                 <td> {{$j->JGD_NOMBRE}}</td>
                 <td> {{$j->JGD_DCI}}</td>
                 <td> {{link_to_route('jugadores.edit', 'editar', $parameters = $j->JGD_ID , $attributes = ['class'=>'btn btn-xs btn-warning'])}}</td>
-                <td> </td>
+                <td> 
+                    {!! Form::model($j, array('route' => array('jugadores.destroy', $j->JGD_ID), 'method'=>'DELETE', 'class' => 'form-horizontal editar', 'role'=>'form')) !!}
+                    <button type="submit" class="btn btn-xs btn-danger">Eliminar</button>
+                    {!! Form::close() !!}
+                </td>
             </tr>
             @endforeach         
         </table>
