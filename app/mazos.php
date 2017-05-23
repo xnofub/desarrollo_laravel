@@ -22,6 +22,10 @@ class Mazos extends Model
         return $this->belongsTo('App\Formatos','FTO_ID' );
     }
     
+    public function ToEventoMazo(){
+        return $this->hasMany('App\EventoMazo');
+    }
+    
     
     
 }

@@ -15,4 +15,10 @@ class Jugadores extends Model
                                );
     public $timestamps = false;
     
+    
+    
+    public function ToEventoMazo(){
+        return $this->hasMany('App\EventoMazo');
+    }
+    
 }

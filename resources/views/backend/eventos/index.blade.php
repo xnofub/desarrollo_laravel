@@ -24,8 +24,8 @@
             <td>{{$e->EVN_NOMBRE}}</td>
             <td>{{$e->ToFormatos->FTO_NOMBRE}}</td>
             <td>{{$e->ToTiendas->TND_NOMBRE}}</td>
-            <td>Editar</td>
-            <td>Listas</td>
+            <td>{{link_to_route('eventos.edit', 'editar', $parameters = $e->EVN_ID , $attributes = ['class'=>'btn btn-xs btn-warning'])}}</td>
+            <td>{{link_to_route('participantes.show', 'Participantes', $parameters = $e->EVN_ID , $attributes = ['class'=>'btn btn-xs btn-success'])}}</td>
         </tr>    
         @endforeach
     </tbody>

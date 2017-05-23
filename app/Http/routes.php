@@ -22,6 +22,15 @@ Route::resource('jugadores', 'JugadoresController');
 Route::resource('formatos', 'FormatosController');
 Route::resource('eventos', 'EventosController');
 
+/*
+Route::get('participantes/{id}', [
+    'as'=>'participantes',
+    'uses'=>'EventosMazosController@participaEvento'
+]);
+ */
+Route::resource('participantes', 'EventosMazosController');
+
+
 
 
 
