@@ -9,9 +9,9 @@
         <table class="table">
             <tr >
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>NOMBRE</th>
                 <th>DCI</th>
-                <th colspan="2">Opciones</th>
+                <th colspan="2">OPCIONES</th>
             </tr>
 
             @foreach($jugadores as $j)

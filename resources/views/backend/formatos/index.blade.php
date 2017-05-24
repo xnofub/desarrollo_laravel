@@ -5,21 +5,18 @@
 @include('layouts.flash')
 <!-- <button type="button" class="btn btn-xs btn-success"><a href="{!!URL::to('/mazos/create')!!}" > AGREGAR </a> </button> -->
 
-{{link_to_route('formatos.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
+<?php /* {{link_to_route('formatos.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}} */ ?>
 <div align="center">
-        <table class="table">
+        <table class="table table-striped table-condensed table-hover">
             <tr >
                 <th>ID</th>
-                <th>Formato</th>
-                <th colspan="2">Opciones</th>
+                <th>FORMATO</th>
             </tr>
 
             @foreach($formatos as $f)
             <tr>
                 <td> {{$f->FTO_ID}} </td>
                 <td> {{$f->FTO_NOMBRE}} </td>
-                <td> </td>
-                <td> </td>
             </tr>
             @endforeach         
         </table>

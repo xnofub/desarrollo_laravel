@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\EventoMazo;
 use App\Http\Requests;
 use App\Eventos;
+use App\Jugadores;
 
 class EventosMazosController extends Controller
 {
@@ -53,15 +54,18 @@ class EventosMazosController extends Controller
     {
         
         $evento = Eventos::find($id);
+        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        //dd($evento);
         $participantes = EventoMazo::where('EVN_ID', $id)
                ->orderBy('EVM_POSICION', 'desc')
                ->get();
-        
+        //dd($jugadores);
         //foreach($participantes as $p){
             //dd($p->ToMazos->MAZ_NOMBRE);
             //dd($p->ToEventos->EVN_NOMBRE);
         //}
         //dd($evento);
+        return view('backend.eventosMazos.index', compact('evento','participantes','jugadores'));
         
         
     }

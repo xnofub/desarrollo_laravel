@@ -30,6 +30,9 @@ class EventoMazo extends Model
         return $this->belongsTo('App\Eventos','EVN_ID');
     }
     
+    public function ToJugadores(){
+        return $this->belongsTo('App\Jugadores','JGD_ID');
+    }
     
     
     

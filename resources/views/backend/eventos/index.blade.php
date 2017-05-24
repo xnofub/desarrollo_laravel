@@ -6,10 +6,10 @@
 
 {{link_to_route('eventos.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
 
-
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
+            <th>ID</th>
             <th>FECHA</th>
             <th>NOMBRE</th>
             <th>FORMATO</th>
@@ -20,6 +20,7 @@
     <tbody>
         @foreach($eventos as $e)
         <tr>
+            <td>{{$e->EVN_ID}}</td>
             <td>{{$e->EVN_FECHA}}</td>
             <td>{{$e->EVN_NOMBRE}}</td>
             <td>{{$e->ToFormatos->FTO_NOMBRE}}</td>

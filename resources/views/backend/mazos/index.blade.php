@@ -7,12 +7,12 @@
 <!-- <button type="button" class="btn btn-xs btn-success"><a href="{!!URL::to('/mazos/create')!!}" > AGREGAR </a> </button> -->
 {{link_to_route('mazos.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
 <div align="center">
-        <table class="table">
+        <table class="table table-striped table-hover">
             <tr >
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Formato</th>
-                <th colspan="2">Opciones</th>
+                <th>NOMBRE</th>
+                <th>FORMATO</th>
+                <th colspan="2">OPCIONES</th>
             </tr>
 
             @foreach($mazos as $m)
