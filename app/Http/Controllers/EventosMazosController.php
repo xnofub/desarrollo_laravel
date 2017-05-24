@@ -7,6 +7,9 @@ use App\EventoMazo;
 use App\Http\Requests;
 use App\Eventos;
 use App\Jugadores;
+use \App\Mazos;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class EventosMazosController extends Controller
 {
@@ -30,8 +33,21 @@ class EventosMazosController extends Controller
      */
     public function create()
     {
-        //
+        /*
+        $evento = Eventos::find(1);
+        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        //dd($evento);
+        $participantes = EventoMazo::where('EVN_ID', 1)
+               ->orderBy('EVM_POSICION', 'desc')
+               ->get();
+        return view('backend.eventosmazos.agregar', compact('evento','participantes','jugadores'));
+         * 
+         */
+        $evento = Eventos::find(1);
+        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        return view('backend.eventosmazos.agregar', compact('evento','jugadores'));
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -42,6 +58,20 @@ class EventosMazosController extends Controller
     public function store(Request $request)
     {
         //
+        //dd($request->all());
+        
+        $idEvento = $request->EVN_ID;
+        $eventomazo = new EventoMazo();
+        $eventomazo->EVN_ID = $request->EVN_ID;
+        $eventomazo->MAZ_ID = $request->MAZ_ID;
+        $eventomazo->JGD_ID  = $request->JGD_ID;
+        $eventomazo->EVM_NOMBRE_MAZO = $request->EVM_NOMBRE_MAZO;
+        $eventomazo->EVM_POSICION = $request->EVM_POSICION;
+        $eventomazo->save();
+        
+        Session::flash('message','Resultado ingresado');
+        return redirect::to('/participantes/'.$idEvento);  
+        
     }
 
     /**
@@ -65,10 +95,18 @@ class EventosMazosController extends Controller
             //dd($p->ToEventos->EVN_NOMBRE);
         //}
         //dd($evento);
-        return view('backend.eventosMazos.index', compact('evento','participantes','jugadores'));
-        
-        
+        return view('backend.eventosmazos.index', compact('evento','participantes','jugadores'));
     }
+    
+    
+    public function createbyget($id)
+    {
+        $evento = Eventos::find($id);
+        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        $mazos = Mazos::orderBy('MAZ_NOMBRE', 'desc')->lists('MAZ_NOMBRE','MAZ_ID');
+        return view('backend.eventosmazos.agregar', compact('evento','jugadores','mazos'));
+    }
+    
 
     /**
      * Show the form for editing the specified resource.

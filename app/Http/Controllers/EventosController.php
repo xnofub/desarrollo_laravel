@@ -23,7 +23,7 @@ class EventosController extends Controller
     public function index()
     {
         //
-        $eventos = Eventos::orderBy('EVN_FECHA')->paginate(10);
+        $eventos = Eventos::orderBy('EVN_ID','desc')->paginate(10);
         /*foreach ($eventos as $e){
             dd($e->ToFormatos->FTO_NOMBRE);
         }*/

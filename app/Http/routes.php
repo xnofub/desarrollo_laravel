@@ -28,8 +28,8 @@ Route::get('participantes/{id}', [
     'uses'=>'EventosMazosController@participaEvento'
 ]);
  */
+Route::get('participantes/scoreparticipantes/{id}', 'EventosMazosController@createbyget');
 Route::resource('participantes', 'EventosMazosController');
-
 
 
 

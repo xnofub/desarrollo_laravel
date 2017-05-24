@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jugadores;
-use Illuminate\Support\Facades\Session;
+
 use App\Http\Requests;
 use App\Http\Requests\JugadoresCreateRequest;
 use App\Http\Requests\JugadoresUpdateRequest;

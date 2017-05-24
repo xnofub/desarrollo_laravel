@@ -14,6 +14,7 @@ class EventoMazo extends Model
                                 'EVN_ID',
                                 'MAZ_ID',
                                 'EVN_ID',
+                                'JGD_ID',
                                 'EVM_NOMBRE_MAZO',
                                 'EVM_POSICION',
                                );
