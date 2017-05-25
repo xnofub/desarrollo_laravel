@@ -61,5 +61,13 @@
         {!! Html::script('assets/js/bootstrap.min.js') !!}
         {!! Html::script('assets/js/bootstrap-datepicker.js') !!}
         @yield('js')
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.modal').on('hidden.bs.modal', function () {
+                        $(this).removeData('bs.modal');
+                });
+            });
+        </script>
     </body>
 </html>

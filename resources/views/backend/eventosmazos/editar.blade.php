@@ -1,4 +1,4 @@
-{!! Form::model($jugador, array('route' => array('jugadores.update', $jugador->JGD_ID), 'method'=>'PUT', 'class' => 'form-horizontal editar', 'role'=>'form')) !!}
+{!! Form::model($eventomazo, array('route' => array('participantes.update', $eventomazo->EVM_ID), 'method'=>'PUT', 'class' => 'form-horizontal editar', 'role'=>'form')) !!}
 <div class="modal-header">
     <h4 class="modal-title titulo_formulario" id="">EDITAR MAZO</h4>
 </div>

@@ -16,25 +16,25 @@
         <div class="col-lg-12">
             {!! Form::label('JUGADOR', 'JUGADOR', array('class' => 'col-lg-3')) !!}
             <div class="col-lg-9">
-                {!! Form::select('JGD_ID', $jugadores, '', array('class' => 'form-control col-lg-6')) !!}
+                {!! Form::select('JGD_ID', $jugadores, isset($eventomazo->JGD_ID) ? $eventomazo->JGD_ID : '' , array('class' => 'form-control col-lg-6')) !!}
             </div>
         </div>
         <div class="col-lg-12">
             {!! Form::label('EVM_NOMBRE_MAZO', 'NOMBRE MAZO', array('class' => 'col-lg-3')) !!}
             <div class="col-lg-9">
-                {!! Form::text('EVM_NOMBRE_MAZO','', ['class' => 'form-control']) !!}
+                {!! Form::text('EVM_NOMBRE_MAZO',isset($eventomazo->EVM_NOMBRE_MAZO) ? $eventomazo->EVM_NOMBRE_MAZO : '' , ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-lg-12">
             {!! Form::label('MAZO', 'TIPO MAZO', array('class' => 'col-lg-3')) !!}
             <div class="col-lg-9">
-                {!! Form::select('MAZ_ID', $mazos, '', array('class' => 'form-control col-lg-6')) !!}
+                {!! Form::select('MAZ_ID', $mazos, isset($eventomazo->MAZ_ID) ? $eventomazo->MAZ_ID : '' , array('class' => 'form-control col-lg-6')) !!}
             </div>
         </div>
         <div class="col-lg-12">
             {!! Form::label('POSICION', 'POSICIÓN', array('class' => 'col-lg-3')) !!}
             <div class="col-lg-9">
-                {!! Form::text('EVM_POSICION','', ['class' => 'form-control']) !!}
+                {!! Form::text('EVM_POSICION',isset($eventomazo->EVM_POSICION) ? $eventomazo->EVM_POSICION : '', ['class' => 'form-control']) !!}
             </div>
         </div>
 </div>

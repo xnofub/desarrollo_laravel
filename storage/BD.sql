@@ -68,32 +68,35 @@ CREATE TABLE `eventos` (
   KEY `TND_ID` (`TND_ID`),
   CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`FTO_ID`) REFERENCES `formatos` (`FTO_ID`),
   CONSTRAINT `eventos_ibfk_2` FOREIGN KEY (`TND_ID`) REFERENCES `tiendas` (`TND_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `eventos` */
 
-insert  into `eventos`(`EVN_ID`,`EVN_NOMBRE`,`EVN_FECHA`,`FTO_ID`,`TND_ID`) values (1,'Daily Forja','2017-05-01',2,1),(2,'Daily Forja','2017-05-01',1,1),(3,'Daily Forja','2017-05-22',2,1),(4,'Daily Forja','2017-05-22',2,1),(5,'Daily Forja','2017-05-22',2,1);
+insert  into `eventos`(`EVN_ID`,`EVN_NOMBRE`,`EVN_FECHA`,`FTO_ID`,`TND_ID`) values (9,'MIERCOLES DE MODERN- MAGIC4EVER','2017-05-24',2,3),(10,'MIERCOLES DE MODERN- MAGIC4EVER','2017-05-17',2,3),(11,'MILONGA MAGIC SUR','2017-05-16',2,2);
 
-/*Table structure for table `eventos_mazos` */
+/*Table structure for table `eventosmazos` */
 
-DROP TABLE IF EXISTS `eventos_mazos`;
+DROP TABLE IF EXISTS `eventosmazos`;
 
-CREATE TABLE `eventos_mazos` (
+CREATE TABLE `eventosmazos` (
   `EVM_ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `EVN_ID` bigint(20) DEFAULT NULL,
   `JGD_ID` bigint(20) DEFAULT NULL,
   `MAZ_ID` bigint(20) DEFAULT NULL,
   `EVM_NOMBRE_MAZO` varchar(255) DEFAULT NULL,
+  `EVM_POSICION` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`EVM_ID`),
   KEY `EVN_ID` (`EVN_ID`),
   KEY `JGD_ID` (`JGD_ID`),
   KEY `MAZ_ID` (`MAZ_ID`),
-  CONSTRAINT `eventos_mazos_ibfk_1` FOREIGN KEY (`EVN_ID`) REFERENCES `eventos` (`EVN_ID`),
-  CONSTRAINT `eventos_mazos_ibfk_2` FOREIGN KEY (`JGD_ID`) REFERENCES `jugadores` (`JGD_ID`),
-  CONSTRAINT `eventos_mazos_ibfk_3` FOREIGN KEY (`MAZ_ID`) REFERENCES `mazos` (`MAZ_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `eventosmazos_ibfk_1` FOREIGN KEY (`EVN_ID`) REFERENCES `eventos` (`EVN_ID`),
+  CONSTRAINT `eventosmazos_ibfk_2` FOREIGN KEY (`JGD_ID`) REFERENCES `jugadores` (`JGD_ID`),
+  CONSTRAINT `eventosmazos_ibfk_3` FOREIGN KEY (`MAZ_ID`) REFERENCES `mazos` (`MAZ_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
-/*Data for the table `eventos_mazos` */
+/*Data for the table `eventosmazos` */
+
+insert  into `eventosmazos`(`EVM_ID`,`EVN_ID`,`JGD_ID`,`MAZ_ID`,`EVM_NOMBRE_MAZO`,`EVM_POSICION`) values (11,9,1,13,'ABZAN FORJA','1'),(12,9,11,3,'BURN','2'),(13,9,12,14,'SHADOW','3'),(14,10,12,14,'SHADOW','1'),(15,10,11,3,'BURN','2'),(16,11,13,15,'Dredge','1'),(17,11,15,16,'GIFT','2'),(18,11,16,17,'Eldrazi','3');
 
 /*Table structure for table `formatos` */
 
@@ -119,11 +122,11 @@ CREATE TABLE `jugadores` (
   `JGD_PAIS` varchar(255) DEFAULT NULL,
   `JGD_DCI` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`JGD_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `jugadores` */
 
-insert  into `jugadores`(`JGD_ID`,`JGD_NOMBRE`,`JGD_PAIS`,`JGD_DCI`) values (1,'Francisco Arturo Carrasco Maureira','-','1205776700'),(2,'Mario BIsama',NULL,'7115100860'),(3,'Neftali Toro ',NULL,'3081087347'),(4,'Roberto del Rio',NULL,'2203827913'),(7,'Pietro Reyes',NULL,'4314941207');
+insert  into `jugadores`(`JGD_ID`,`JGD_NOMBRE`,`JGD_PAIS`,`JGD_DCI`) values (1,'Francisco Arturo Carrasco Maureira','-','1205776700'),(2,'Mario BIsama',NULL,'7115100860'),(3,'Neftali Toro ',NULL,'3081087347'),(4,'Roberto del Rio',NULL,'2203827913'),(7,'Pietro Reyes',NULL,'4314941207'),(9,'IGNACIO ',NULL,'400215454'),(10,'MIGUEL PATIÑO',NULL,'120947327'),(11,'Javier Villouta',NULL,'39670984'),(12,'Leonardo Gonzalos Rodriguez',NULL,'8102254320'),(13,'Alejandro Gatica',NULL,'66666666666'),(14,'Ivo Lee',NULL,'333333333'),(15,'Elias Arzola Galaz',NULL,'22222222'),(16,'Juan Carlos Hernández Contreras',NULL,'888888888');
 
 /*Table structure for table `listas` */
 
@@ -136,7 +139,7 @@ CREATE TABLE `listas` (
   `EVM_ID` bigint(20) DEFAULT NULL,
   KEY `EVM_ID` (`EVM_ID`),
   KEY `CRT_ID` (`CRT_ID`),
-  CONSTRAINT `listas_ibfk_1` FOREIGN KEY (`EVM_ID`) REFERENCES `eventos_mazos` (`EVM_ID`),
+  CONSTRAINT `listas_ibfk_1` FOREIGN KEY (`EVM_ID`) REFERENCES `eventosmazos` (`EVM_ID`),
   CONSTRAINT `listas_ibfk_2` FOREIGN KEY (`CRT_ID`) REFERENCES `cartas` (`CRT_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -153,11 +156,11 @@ CREATE TABLE `mazos` (
   PRIMARY KEY (`MAZ_ID`),
   KEY `FTO_ID` (`FTO_ID`),
   CONSTRAINT `mazos_ibfk_1` FOREIGN KEY (`FTO_ID`) REFERENCES `formatos` (`FTO_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `mazos` */
 
-insert  into `mazos`(`MAZ_ID`,`MAZ_NOMBRE`,`FTO_ID`) values (1,'JUND',2),(2,'UWR',2),(3,'BURN',2),(4,'MARDU TOKENS',2),(5,'UW CONTROL',2),(6,'BLUE MOON',2),(7,'TOKENS WB',2),(8,'BANTDRAZI',1),(9,'ELDRATRON',2),(10,'ADNAUSEUM',2),(11,'STORM',2);
+insert  into `mazos`(`MAZ_ID`,`MAZ_NOMBRE`,`FTO_ID`) values (1,'JUND',2),(2,'UWR',2),(3,'BURN',2),(4,'MARDU TOKENS',2),(5,'UW CONTROL',2),(6,'BLUE MOON',2),(7,'TOKENS WB',2),(8,'BANTDRAZI',1),(9,'ELDRATRON',2),(10,'ADNAUSEUM',2),(11,'STORM',2),(12,'SKRED',2),(13,'ABZAN COUNTERS',2),(14,'DEATH\'S SHADOW',2),(15,'DREDGE',2),(16,'THOPTER GIFTS',2),(17,'GW ELDRAZIS EVOLUTION',2);
 
 /*Table structure for table `tiendas` */
 

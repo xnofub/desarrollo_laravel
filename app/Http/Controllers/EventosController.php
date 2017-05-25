@@ -90,7 +90,15 @@ class EventosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $evento = Eventos::find($id);
+        $formatos = Formatos::lists('FTO_NOMBRE', 'FTO_ID');
+        $tiendas = Tiendas::lists('TND_NOMBRE', 'TND_ID');
+        
+        $fecha = $evento->EVN_FECHA;
+        //dd($evento->EVN_FECHA);
+        list($año, $mes, $dia) = explode('-', $fecha);
+        $fecha = $dia.'/'.$mes.'/'.$año;
+        return view('backend.eventos.editar', compact('evento','formatos','tiendas','fecha'));
     }
 
     /**
@@ -103,6 +111,20 @@ class EventosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
+        
+        $fecha = $request->FECHA;
+        list($dia, $mes, $año) = explode('/', $fecha);
+        $fecha = $año.$mes.$dia;
+        $evento = Eventos::find($id);
+        $evento->EVN_NOMBRE = $request->EVN_NOMBRE;
+        $evento->FTO_ID  = $request->FTO_ID;
+        $evento->TND_ID =  $request->TND_ID;
+        $evento->EVN_FECHA = $fecha;
+        
+        $evento->save();
+        Session::flash('message','Evento '.$request->EVN_NOMBRE.'actualizado con exito.');
+        return redirect::to('/eventos');
     }
 
     /**
@@ -114,5 +136,8 @@ class EventosController extends Controller
     public function destroy($id)
     {
         //
+        $jugador = Eventos::destroy($id);
+        Session::flash('message','Evento a sido borrado con exito.');
+        return redirect::to('/eventos'); 
     }
 }

@@ -117,6 +117,29 @@ class EventosMazosController extends Controller
     public function edit($id)
     {
         //
+        $eventomazo = EventoMazo::find($id);
+        dd($eventomazo->EVM_NOMBRE_MAZO);
+        $idEvento = $eventomazo->ToEventos->EVN_ID;
+        $evento = Eventos::find($idEvento);
+        
+        //dd($eventomazo->ToJugadores->JGD_ID);
+        
+        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        $mazos = Mazos::orderBy('MAZ_NOMBRE', 'desc')->lists('MAZ_NOMBRE','MAZ_ID');
+        return view('backend.eventosmazos.editar', compact('eventomazo','evento','jugadores','mazos'));
+    }
+    
+    
+    public function editbyget($id)
+    {
+        //
+        $eventomazo = EventoMazo::find($id);
+        $idEvento = $eventomazo->EVN_ID;
+        $evento = Eventos::find($idEvento);
+        //dd($eventomazo->ToJugadores->JGD_ID);
+        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        $mazos = Mazos::orderBy('MAZ_NOMBRE', 'desc')->lists('MAZ_NOMBRE','MAZ_ID');
+        return view('backend.eventosmazos.editar', compact('eventomazo','evento','jugadores','mazos'));
     }
 
     /**

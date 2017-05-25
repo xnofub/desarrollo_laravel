@@ -24,15 +24,18 @@
             <td>{{$p->ToMazos->MAZ_NOMBRE}}</td>
             <td>{{$p->ToJugadores->JGD_NOMBRE}}</td>
             <td>{{$p->ToEventos->EVN_NOMBRE}}</td>
+            <td>
+                <a class="btn btn-default btn-xs btn-warning edit" data-toggle="modal" data-target="#myModal" title="Editar" href="{{ url('participantes/editscoreparticipantes/' . $p->EVM_ID . '') }}"> Editar</i></a>
+            </td>
         </tr>
         @endforeach
     </tbody>
 </table>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" id="modal_body">
             
-            <div class="modal-body">
+            <div class="modal-body" >
                 
             </div>
             <div class="modal-footer">
@@ -46,8 +49,9 @@
 @endsection
 @section('js')
 <script type="text/javascript">
-    $(document).ready(function () {
-
-    });
+    
+        
+        
+    
 </script>
 @endsection

@@ -14,7 +14,7 @@
             <th>NOMBRE</th>
             <th>FORMATO</th>
             <th>TIENDA</th>
-            <th colspan='2'>Opciones</th>
+            <th colspan='3'>Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +26,11 @@
             <td>{{$e->ToFormatos->FTO_NOMBRE}}</td>
             <td>{{$e->ToTiendas->TND_NOMBRE}}</td>
             <td>{{link_to_route('eventos.edit', 'editar', $parameters = $e->EVN_ID , $attributes = ['class'=>'btn btn-xs btn-warning'])}}</td>
+            <td>
+                {!! Form::model($e, array('route' => array('eventos.destroy', $e->EVN_ID), 'method'=>'DELETE', 'class' => 'form-horizontal editar', 'role'=>'form')) !!}
+                    <button type="submit" class="btn btn-xs btn-danger">Eliminar</button>
+                {!! Form::close() !!}
+            </td>
             <td>{{link_to_route('participantes.show', 'Participantes', $parameters = $e->EVN_ID , $attributes = ['class'=>'btn btn-xs btn-success'])}}</td>
         </tr>    
         @endforeach
