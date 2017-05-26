@@ -10,13 +10,13 @@
         <div class="col-lg-12">
             {!! Form::label('BUSCADOR', 'BUSCADOR DCI', array('class' => 'col-lg-3')) !!}
             <div class="col-lg-9">
-                {!! Form::text('JGD_DCI','', ['class' => 'form-control']) !!}
+                {!! Form::text('DCI','', ['class' => 'form-control', 'id'=>'DCI']) !!}
             </div>
         </div>
         <div class="col-lg-12">
             {!! Form::label('JUGADOR', 'JUGADOR', array('class' => 'col-lg-3')) !!}
             <div class="col-lg-9">
-                {!! Form::select('JGD_ID', $jugadores, isset($eventomazo->JGD_ID) ? $eventomazo->JGD_ID : '' , array('class' => 'form-control col-lg-6')) !!}
+                {!! Form::select('JGD_ID', $jugadores, isset($eventomazo->JGD_ID) ? $eventomazo->JGD_ID : '' , array('class' => 'form-control col-lg-6' , 'id'=>'JGD_ID')) !!}
             </div>
         </div>
         <div class="col-lg-12">

@@ -160,11 +160,16 @@ class EventosMazosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        //dd($request->all());
+        $idEvn = $request->EVN_ID;
+        $idEvm = $request->EVM_ID;
+        
+        $eventomazo = EventoMazo::destroy($idEvm);
+        Session::flash('message','Registro eliminado correctamente');
+        return redirect::to('/participantes/'.$idEvn);  
         //
     }
-    
-    
   
 }

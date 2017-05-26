@@ -109,4 +109,32 @@ class JugadoresController extends Controller
         return redirect::to('/jugadores'); 
         
     }
+    
+    
+    public function getjugadoresbydci(Request $request){
+        
+        $dci = $request->DCI;
+        //$jugadores = Jugadores::where('JGD_DCI', 'like', '%'.$dci.'%')->get();
+        $arrayjugadores = array();
+        if($dci != ""){
+            $jugadores = jugadores::where('JGD_DCI', 'like', '%'.$dci.'%')->get();
+            foreach($jugadores as $p){
+                        array_push($arrayjugadores, array( 'id' =>$p->JGD_ID,
+                            'nombre' => $p->JGD_NOMBRE) );
+            }
+        }else{
+            $jugadores  = jugadores::all()->sortBy('JGD_NOMBRE');
+            foreach($jugadores as $p){
+                        array_push($arrayjugadores, array( 'id' =>$p->JGD_ID,
+                            'nombre' => $p->JGD_NOMBRE) );
+            }
+        }
+        /*
+        $jugadores = jugadores::where('reference', 'like', '%'.$nombre.'%')->get();
+        foreach($jugadores as $p){
+                        array_push($arrayjugadores, array( 'id' =>$p->JGD_ID,'nombre' => $p->JGD_NOMBRE) );
+        }*/
+        return response()->json($arrayjugadores);
+        
+    }
 }

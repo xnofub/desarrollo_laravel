@@ -32,6 +32,6 @@ Route::get('participantes/scoreparticipantes/{id}', 'EventosMazosController@crea
 Route::get('participantes/editscoreparticipantes/{id}', 'EventosMazosController@editbyget');
 Route::resource('participantes', 'EventosMazosController');
 
-
+Route::resource('getjugadoresbydci', 'JugadoresController@getjugadoresbydci');
 
 

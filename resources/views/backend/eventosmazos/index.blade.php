@@ -14,6 +14,8 @@
             <th>TIPO MAZO</th>
             <th>JUGADOR</th>
             <th>EVENTO</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +28,13 @@
             <td>{{$p->ToEventos->EVN_NOMBRE}}</td>
             <td>
                 <a class="btn btn-default btn-xs btn-warning edit" data-toggle="modal" data-target="#myModal" title="Editar" href="{{ url('participantes/editscoreparticipantes/' . $p->EVM_ID . '') }}"> Editar</i></a>
+            </td>
+            <td>
+                {!! Form::model($p, array('route' => array('participantes.destroy', $p->EVM_ID), 'method'=>'DELETE', 'class' => 'form-horizontal editar', 'role'=>'form')) !!}
+                    {!! Form::hidden('EVN_ID',$evento->EVN_ID, ['class' => 'form-control','readonly'=>'readonly']) !!}
+                    {!! Form::hidden('EVM_ID',$p->EVM_ID, ['class' => 'form-control','readonly'=>'readonly']) !!}
+                    <button type="submit" class="btn btn-xs btn-danger">Eliminar</button>
+                {!! Form::close() !!}
             </td>
         </tr>
         @endforeach
