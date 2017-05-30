@@ -3,27 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Formatos;
+use App\Eventos;
 use App\Http\Requests;
 
-class FormatosController extends Controller
+class PaginaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
-    
     public function index()
     {
-        $formatos = Formatos::paginate(10);
-        return view('backend.formatos.index', compact('formatos'));
+        //
+        $eventos = Eventos::orderBy('EVN_ID','desc')->paginate(10);
+         foreach ($eventos as $e){
+            list($año,$mes,$dia) = explode('-', $e->EVN_FECHA);
+            $fecha = $dia.'/'.$mes.'/'.$año;
+            $e->EVN_FECHA = $fecha;
+        }
+        return view('front.index', compact('eventos'));
     }
 
     /**

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class EventoMazo extends Model
 {
     //
-    protected $table      = 'eventosMazos';
+    protected $table      = 'eventosmazos';
     protected $primaryKey = 'EVM_ID';
     
     protected $fillable = array(

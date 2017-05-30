@@ -20,13 +20,17 @@ class EventosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         //
         $eventos = Eventos::orderBy('EVN_ID','desc')->paginate(10);
-        /*foreach ($eventos as $e){
-            dd($e->ToFormatos->FTO_NOMBRE);
-        }*/
+       
         return view('backend.eventos.index', compact('eventos'));
     }
 

@@ -34,16 +34,14 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="{!!URL::to('/home')!!}">Home</a></li>
+                            <li class="active"><a href="{!!URL::to('/')!!}">Home</a></li>
+                            <li><a href="{!!URL::to('/modern')!!}">Modern</a></li>
+                            <li><a href="{!!URL::to('/standar')!!}">Standar</a></li>
+                            <li><a href="#about">Contacto</a></li>
                             @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
                                 <!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
                             @else
-                            <li><a href="{!!URL::to('/mazos')!!}">Mazos</a></li>
-                            <li><a href="{!!URL::to('/jugadores')!!}">Jugadores</a></li>
-                            <li><a href="{!!URL::to('/eventos')!!}">Eventos</a></li>
-                            <li><a href="{!!URL::to('/formatos')!!}">Formatos</a></li>
-                            <li><a href="#about">Contacto</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         {{ Auth::user()->name }} <span class="caret"></span>
@@ -53,15 +51,21 @@
                                         <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="{!!URL::to('/home')!!}">Admin</a></li>
                             @endif
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
             </nav>
         </div>
-        <div class="container theme-showcase" role="main">
+        <div class="container-fluid" >
             @yield('content')
         </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">Place sticky footer content here.</p>
+            </div>
+        </footer>
         <!-- Scripts -->
         {!! Html::script('assets/js/jquery.min.js') !!}
         {!! Html::script('assets/js/bootstrap.min.js') !!}
