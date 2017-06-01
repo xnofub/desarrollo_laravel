@@ -34,10 +34,10 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="{!!URL::to('/home')!!}">Home</a></li>
+                            <li class="active"><a href="{!!URL::to('/')!!}">Home</a></li>
                             @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
-                                <!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
+                                <li><a href="{{ url('/register') }}">Register</a></li>
                             @else
                             <li><a href="{!!URL::to('/mazos')!!}">Mazos</a></li>
                             <li><a href="{!!URL::to('/jugadores')!!}">Jugadores</a></li>

@@ -158,6 +158,15 @@ class EventosMazosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $eventomazo = EventoMazo::find($id);
+        $idEvento = $eventomazo->EVN_ID;
+        $eventomazo->MAZ_ID = $request->MAZ_ID;
+        $eventomazo->JGD_ID  = $request->JGD_ID;
+        $eventomazo->EVM_NOMBRE_MAZO = $request->EVM_NOMBRE_MAZO;
+        $eventomazo->EVM_POSICION = $request->EVM_POSICION;
+        $eventomazo->save();
+        Session::flash('message','Resultado actualizado');
+        return redirect::to('/participantes/'.$idEvento);  
     }
 
     /**

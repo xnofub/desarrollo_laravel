@@ -42,6 +42,10 @@
                             <label>Eliminar: </label>
                             <button type="submit" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span></button>
                         {!! Form::close() !!}
+                        <label>Lista: </label>
+                        <a class="btn btn-default btn-xs btn-primary edit"  title="Editar" href="{{ url('lista/' . $p->EVM_ID . '') }}"> <span class="glyphicon glyphicon-plus-sign"></span></a>
+                                
+                        
                         
                     </div>
                 </div>

@@ -39,25 +39,25 @@
             </div>
             
             <div class="table-responsive">
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>FECHA</th>
-            <th>NOMBRE</th>
-            <th>TIENDA</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($eventos as $e)
-        <tr>
-            <td>{{$e->EVN_FECHA}}</td>
-            <td>{{$e->EVN_NOMBRE}}</td>
-            <td>{{$e->ToTiendas->TND_NOMBRE}}</td>
-        </tr>    
-        @endforeach
-    </tbody>
-</table>
-</div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>FECHA</th>
+                            <th>NOMBRE</th>
+                            <th>TIENDA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($eventos as $e)
+                        <tr>
+                            <td>{{$e->EVN_FECHA}}</td>
+                            <td>{{$e->EVN_NOMBRE}}</td>
+                            <td>{{$e->ToTiendas->TND_NOMBRE}}</td>
+                        </tr>    
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>    
         <div class='col-lg-6'> 
             <div class="well">

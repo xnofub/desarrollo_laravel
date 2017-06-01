@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/laravel01/app/Http/Controllers/JugadoresController.php</file>
-            <file>file:/C:/xampp/htdocs/laravel01/app/EventoMazo.php</file>
-            <file>file:/C:/xampp/htdocs/laravel01/app/Http/Controllers/EventosController.php</file>
-            <file>file:/C:/xampp/htdocs/laravel01/resources/views/backend/eventosmazos/index.blade.php</file>
-            <file>file:/C:/xampp/htdocs/laravel01/app/Http/Controllers/EventosMazosController.php</file>
-            <file>file:/C:/xampp/htdocs/laravel01/resources/views/backend/eventosmazos/form/resultado.blade.php</file>
-            <file>file:/C:/xampp/htdocs/laravel01/app/Http/routes.php</file>
+            <file>file:/C:/xampp/htdocs/DM/app/EventoMazo.php</file>
+            <file>file:/C:/xampp/htdocs/DM/app/eventos.php</file>
+            <file>file:/C:/xampp/htdocs/DM/resources/views/backend/eventos/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/DM/app/jugadores.php</file>
+            <file>file:/C:/xampp/htdocs/DM/app/mazos.php</file>
+            <file>file:/C:/xampp/htdocs/DM/app/Http/Controllers/EventosMazosController.php</file>
         </group>
     </open-files>
 </project-private>

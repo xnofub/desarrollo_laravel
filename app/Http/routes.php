@@ -30,4 +30,6 @@ Route::resource('participantes', 'EventosMazosController');
 Route::resource('getjugadoresbydci', 'JugadoresController@getjugadoresbydci');
 Route::auth();
 Route::get('/home', 'HomeController@index');
+Route::resource('lista', 'ListaController');
+
 //Route::resource('index', 'PaginaController');
