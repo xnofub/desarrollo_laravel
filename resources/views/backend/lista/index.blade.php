@@ -14,7 +14,7 @@
             
     </div>
     <div class='col-lg-12'>
-        {{Form::open()}}
+        {{Form::open(array('id' => 'formcarta'))}}
         <div class="form-group col-lg-4">
              {{Form::label('Carta','Nombre')}}            
              {{Form::text('nombre',null,[ 'id'=>'nombre' , 'class'=>'form-control' ])}}            
@@ -59,9 +59,19 @@
 @endsection
 @section('js')
 <script type="text/javascript">
-    
-        
-        
-    
+$( "#enviar" ).click(function() {
+    //alert('click');
+    var data_form = $("#formcarta").serialize();
+    var token  = $('#token').val();
+    var url = "{!!URL::to('/lista')!!}";
+    //alert(ruta);
+        $.ajax({
+        jeaders: {"X-CSRF-TOKEN": token},
+        method: "POST",
+        url: url,
+        data: data_form,
+        dataType: "json"
+      });
+}); 
 </script>
 @endsection

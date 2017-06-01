@@ -8,6 +8,7 @@ use App\Http\Requests;
 use  App\EventoMazo;
 use App\TipoCarta;
 
+
 class ListaController extends Controller
 {
     /**
@@ -38,7 +39,9 @@ class ListaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            echo $request->nombre;
+            echo $request->tipocarta;
+            echo $request->cantidad;
     }
 
     /**
