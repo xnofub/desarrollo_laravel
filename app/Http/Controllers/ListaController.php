@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use  App\EventoMazo;
+use App\TipoCarta;
 
 class ListaController extends Controller
 {
@@ -48,10 +49,10 @@ class ListaController extends Controller
      */
     public function show($id)
     {
-       
+        $tiposcarta = TipoCarta::lists('TCR_NOMBRE','TCR_ID');
         $eventoMazo = EventoMazo::find($id);
         //dd($eventoMazo);
-             return view('backend.lista.index', compact('eventoMazo'));
+             return view('backend.lista.index', compact('eventoMazo','tiposcarta'));
     }
 
     /**

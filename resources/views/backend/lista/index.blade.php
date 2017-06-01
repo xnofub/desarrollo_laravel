@@ -14,7 +14,17 @@
             
     </div>
     <div class='col-lg-12'>
-        
+        {{Form::open()}}
+        <div class="form-group col-lg-4">
+             {{Form::label('Carta','Nombre')}}            
+             {{Form::text('nombre',null,[ 'id'=>'nombre' , 'class'=>'form-control' ])}}            
+             {{Form::label('tipocarta','Tipo')}}            
+             {{Form::select('tipocarta', $tiposcarta, null, array('class' => 'form-control','id'=>'tipocarta'))}}
+             {{Form::label('cantidad','Cantidad')}}            
+             {{Form::text('cantidad',null,[ 'id'=>'cantidad' , 'class'=>'form-control' ])}} 
+             {{link_to('#',$title='Registrar',$attributes = ['id'=>'enviar','class'=>'btn btn-primary'])}}
+        </div>
+        {{Form::close()}}
         
         
         
