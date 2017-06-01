@@ -39,9 +39,13 @@ class ListaController extends Controller
      */
     public function store(Request $request)
     {
-            echo $request->nombre;
+            //LLEGA PETICION POR AJAX
+            if($request->ajax()){
+               echo  "PUTO AJAX";
+            }
+            /*echo $request->nombre;
             echo $request->tipocarta;
-            echo $request->cantidad;
+            echo $request->cantidad;*/
     }
 
     /**
