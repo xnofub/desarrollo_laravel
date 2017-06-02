@@ -17,16 +17,17 @@
         {{Form::open(array('id' => 'formcarta'))}}
         <div class="form-group col-lg-12">
              {{Form::label('Carta','Nombre')}}            
-             {{Form::text('nombre',null,[ 'id'=>'nombre' , 'class'=>'form-control' ])}}            
+             {{Form::text('NOMBRE',null,[ 'id'=>'NOMBRE' , 'class'=>'form-control' ])}}            
              {{Form::label('tipocarta','Tipo')}}            
-             {{Form::select('tipocarta', $tiposcarta, null, array('class' => 'form-control','id'=>'tipocarta'))}}
-             {{Form::label('idcarta','Carta')}}   
-             <select name="idcarta" id="idcarta" class="form-control" >
+             {{Form::select('TCR_ID', $tiposcarta, null, array('class' => 'form-control','id'=>'TCR_ID'))}}
+             {{Form::label('ID_CARTA','Carta')}}   
+             <select name="ID_CARTA" id="ID_CARTA" class="form-control" >
                  <option value="null">SELECCIONE CARTA</option>
              </select>
              {{Form::label('cantidad','Cantidad')}}            
-             {{Form::text('cantidad',null,[ 'id'=>'cantidad' , 'class'=>'form-control' ])}} 
+             {{Form::text('CANTIDAD',null,[ 'id'=>'CANTIDAD' , 'class'=>'form-control' ])}} 
              {{link_to('#',$title='Registrar',$attributes = ['id'=>'enviar','class'=>'btn btn-primary'])}}
+             {{Form::hidden('EVM_ID',$eventoMazo->EVM_ID,[ 'id'=>'EVM_ID' , 'readonly'=>'readonly' ])}}
         </div>
         {{Form::close()}}
         
@@ -44,12 +45,14 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($listaCartas as $l)
                 <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
+                    <td>{{$l->LST_CANTIDAD}}</td>
+                    <td>{{$l->LST_NOMBRE_CARTA}}</td>
+                    <td>{{$l->ToTipoCarta->TCR_NOMBRE}}</td>
+                    <td>{{$l->LST_ID}}</td>
                 </tr>
+                @endforeach 
             </tbody>
         </table>
     </div>

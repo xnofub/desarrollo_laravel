@@ -14,4 +14,10 @@ class TipoCarta extends Model
                                );
     public $timestamps = false;
     
+    
+    public function ToLista(){
+            return $this->hasMany('App\Lista', 'TCR_ID');
+
+    }
+    
 }

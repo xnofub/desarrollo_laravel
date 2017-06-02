@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use  App\EventoMazo;
 use App\TipoCarta;
+use \App\Lista;
 
 
 class ListaController extends Controller
@@ -41,11 +42,17 @@ class ListaController extends Controller
     {
             //LLEGA PETICION POR AJAX
             if($request->ajax()){
-               echo  "PUTO AJAX";
+                
+                //echo $request->CANTIDAD.$request->EVM_ID.$request->NOMBRE. $request->TCR_ID;
+                
+                $lista = new Lista();
+                $lista->LST_CANTIDAD  =  $request->CANTIDAD;
+                $lista->EVM_ID = $request->EVM_ID;
+                $lista->LST_NOMBRE_CARTA = $request->NOMBRE ;
+                $lista->TCR_ID = $request->TCR_ID;
+                $lista->save();
+                echo "AJAX";
             }
-            /*echo $request->nombre;
-            echo $request->tipocarta;
-            echo $request->cantidad;*/
     }
 
     /**
@@ -58,8 +65,9 @@ class ListaController extends Controller
     {
         $tiposcarta = TipoCarta::lists('TCR_NOMBRE','TCR_ID');
         $eventoMazo = EventoMazo::find($id);
+        $listaCartas = Lista::where('EVM_ID','=',$id)->get();
         //dd($eventoMazo);
-             return view('backend.lista.index', compact('eventoMazo','tiposcarta'));
+             return view('backend.lista.index', compact('eventoMazo','tiposcarta','listaCartas'));
     }
 
     /**
