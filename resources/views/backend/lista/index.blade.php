@@ -31,7 +31,7 @@
         </div>
         {{Form::close()}}
         
-        
+      
         
     </div>
     <div class='col-lg-12'>
@@ -44,7 +44,7 @@
                     <th>Editar</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="bodytable">
                 @foreach($listaCartas as $l)
                 <tr>
                     <td>{{$l->LST_CANTIDAD}}</td>
@@ -62,7 +62,6 @@
 </div>
 
 
-
 @endsection
 @section('js')
 <script type="text/javascript">
@@ -72,13 +71,28 @@ $( "#enviar" ).click(function() {
     var data_form = $("#formcarta").serialize();
     var token  = $('#token').val();
     var url = "{!!URL::to('/lista')!!}";
+    var tabla = $('#bodytable');
     //alert(ruta);
         $.ajax({
         jeaders: {"X-CSRF-TOKEN": token},
         method: "POST",
         url: url,
         data: data_form,
-        dataType: "json"
+        dataType: "json",
+                success: function(result) {
+                    //$("#myInfo").remove();
+                    //alert("Data found");
+                    //alert(result);
+                    tabla.html("");
+                    $(result).each(function( index, value ) {
+                        tabla.append("<tr><td>"+value.cantidad+"</td><td>"+value.nombre+"</td><td>"+value.tipocarta+"</td><td>"+value.id+"</td></tr>");
+                        console.log( value.id + value.nombre );
+                    });
+                    $('#formcarta').trigger("reset");
+                },
+                error: function(result) {
+                    alert("Data not found");
+                }
       });
 }); 
 </script>

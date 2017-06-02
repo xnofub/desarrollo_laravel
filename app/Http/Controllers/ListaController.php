@@ -51,7 +51,19 @@ class ListaController extends Controller
                 $lista->LST_NOMBRE_CARTA = $request->NOMBRE ;
                 $lista->TCR_ID = $request->TCR_ID;
                 $lista->save();
-                echo "AJAX";
+                
+                $listaCartas = Lista::where('EVM_ID','=',$lista->EVM_ID)->get();
+                $arrayCartas  = array();
+                foreach($listaCartas as $c){
+                        array_push($arrayCartas, array( 
+                            'id' =>$c->LST_ID,
+                            'nombre' => $c->LST_NOMBRE_CARTA,
+                            'tipocarta' => $c->ToTipoCarta->TCR_NOMBRE,
+                            'cantidad' => $c->LST_CANTIDAD
+                            ) 
+                        );
+                }          
+                return response()->json($arrayCartas);
             }
     }
 
