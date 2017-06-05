@@ -28,6 +28,27 @@ class CartasController extends Controller
         //
     }
 
+    
+    public function getcartasbyid(Request $request){
+        $nombrecarta = $request->nombrecarta;
+        //$jugadores = Jugadores::where('JGD_DCI', 'like', '%'.$dci.'%')->get();
+        $arraycartas = array();
+        if($nombrecarta != ""){
+            $jugadores = jugadores::where('JGD_DCI', 'like', '%'.$dci.'%')->get();
+            foreach($jugadores as $p){
+                        array_push($arraycartas, array( 'id' =>$p->JGD_ID,
+                            'nombre' => $p->JGD_NOMBRE) );
+            }
+        }else{
+            
+        }
+        /*
+        $jugadores = jugadores::where('reference', 'like', '%'.$nombre.'%')->get();
+        foreach($jugadores as $p){
+                        array_push($arrayjugadores, array( 'id' =>$p->JGD_ID,'nombre' => $p->JGD_NOMBRE) );
+        }*/
+        return response()->json($arraycartas);
+    }
     /**
      * Store a newly created resource in storage.
      *

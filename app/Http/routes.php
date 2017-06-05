@@ -31,5 +31,6 @@ Route::resource('getjugadoresbydci', 'JugadoresController@getjugadoresbydci');
 Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::resource('lista', 'ListaController');
+Route::resource('getcartasbyid', 'JugadoresController@getcartasbyid');
 
 //Route::resource('index', 'PaginaController');

@@ -95,5 +95,30 @@ $( "#enviar" ).click(function() {
                 }
       });
 }); 
+
+$( "#NOMBRE" ).keyup(function() {
+             
+            var selectcbo = $("#ID_CARTA");
+            var nombrecarta  = $("#NOMBRE" ).val();
+            var route = "{!!URL::to('/getjugadoresbydci')!!}";
+            var token  = $("input[name*='_token']").val();
+            
+           if(parseInt(nombrecarta.length) > 3  ){
+               console.clear();
+               console.log('BUSCAR');
+            selectcbo.html("");
+            //selectjgd.append("<option value=''>SELECCIONE UN JUGADOR</option>");
+            $.post( route, { nombrecarta: dci , _token : token })
+            .done(function( data ) {
+                $(data).each(function( index, value ) {
+                    selectcbo.append("<option value='"+value.id+"'> "+value.nombre+"</option>");
+                    console.log( value.id + value.nombre );
+                });
+            });
+           }
+});
+
+
+
 </script>
 @endsection
