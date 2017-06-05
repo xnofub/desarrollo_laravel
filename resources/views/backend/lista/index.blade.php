@@ -56,9 +56,10 @@
                     </a>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-xs btn-danger">
+                        {{$l->LST_ID}}
+                        <!-- <button type="submit" class="btn btn-xs btn-danger">
                             <span class="glyphicon glyphicon-minus-sign"></span>
-                        </button>
+                        </button> -->
                     </td>
                 </tr>
                 @endforeach 
@@ -73,7 +74,7 @@
 
 
 <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content" id="modal_body">
             <div class="modal-body" >
                 <img src="#" id="crtimg"  />
@@ -107,9 +108,19 @@ $( "#enviar" ).click(function() {
                     //$("#myInfo").remove();
                     //alert("Data found");
                     //alert(result);
+                    var html = "";
                     tabla.html("");
                     $(result).each(function( index, value ) {
-                        tabla.append("<tr><td>"+value.cantidad+"</td><td>"+value.nombre+"</td><td>"+value.tipocarta+"</td><td>"+value.id+"</td></tr>");
+                        html = "<tr>";
+                        html += "<td>"+value.cantidad+"</td>";
+                        html += "<td>"+value.nombre+"</td>";
+                        html += "<td>"+value.tipocarta+"</td>";
+                        html += "<td><a class='btn btn-default btn-xs btn-default edit' data-toggle='modal' data-target='#myModal' title='ver' href='{!!URL::to('/lista/"+value.id+"/edit')!!}'><span class='glyphicon glyphicon-search'></span> </a></td>"; 
+                     
+                        html += "<td>"+value.id+"</td>";
+                        html += "</tr>";
+                        
+                        tabla.append(html);
                         console.log( value.id + value.nombre );
                     });
                     $('#formcarta').trigger("reset");

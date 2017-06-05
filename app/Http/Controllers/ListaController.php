@@ -99,7 +99,7 @@ class ListaController extends Controller
     {
         $carta = Lista::find($id);
         //echo "<img src='".$carta->ToCartas->CRT_IMAGEN."' border='0' />";
-        dd($carta);
+        return view('backend.lista.carta', compact('carta'));
     }
 
     /**
