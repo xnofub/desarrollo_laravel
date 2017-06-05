@@ -50,23 +50,30 @@ class ListaController extends Controller
                 $lista->EVM_ID = $request->EVM_ID;
                 $lista->LST_NOMBRE_CARTA = $request->NOMBRE ;
                 $lista->TCR_ID = $request->TCR_ID;
+                $lista->CRT_ID = $request->ID_CARTA;
                 $lista->save();
-                
-                $listaCartas = Lista::where('EVM_ID','=',$lista->EVM_ID)->get();
                 $arrayCartas  = array();
-                foreach($listaCartas as $c){
-                        array_push($arrayCartas, array( 
-                            'id' =>$c->LST_ID,
-                            'nombre' => $c->LST_NOMBRE_CARTA,
-                            'tipocarta' => $c->ToTipoCarta->TCR_NOMBRE,
-                            'cantidad' => $c->LST_CANTIDAD
-                            ) 
-                        );
-                }          
+                $arrayCartas = $this->getListadoCartas($lista->EVM_ID);
                 return response()->json($arrayCartas);
             }
     }
 
+    
+    public static function getListadoCartas($id){
+        $listaCartas = Lista::where('EVM_ID','=',$id)->get();
+        $arrayCartas  = array();
+        foreach($listaCartas as $c){
+                array_push($arrayCartas, array( 
+                    'id' =>$c->LST_ID,
+                    'nombre' => $c->ToCartas->CRT_NOMBRE,
+                    'tipocarta' => $c->ToTipoCarta->TCR_NOMBRE,
+                    'cantidad' => $c->LST_CANTIDAD
+                    ) 
+                );
+        }          
+        return $arrayCartas;
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -90,8 +97,9 @@ class ListaController extends Controller
      */
     public function edit($id)
     {
-        //
-        dd($id);
+        $carta = Lista::find($id);
+        //echo "<img src='".$carta->ToCartas->CRT_IMAGEN."' border='0' />";
+        dd($carta);
     }
 
     /**
@@ -114,6 +122,6 @@ class ListaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }

@@ -27,4 +27,8 @@ class Lista extends Model
     }
     
     
+    public function ToCartas(){
+        return $this->belongsTo('App\Cartas','CRT_ID' );
+    }
+    
 }

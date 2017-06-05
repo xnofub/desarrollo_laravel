@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Cartas;
 
 class CartasController extends Controller
 {
@@ -34,10 +35,10 @@ class CartasController extends Controller
         //$jugadores = Jugadores::where('JGD_DCI', 'like', '%'.$dci.'%')->get();
         $arraycartas = array();
         if($nombrecarta != ""){
-            $jugadores = jugadores::where('JGD_DCI', 'like', '%'.$dci.'%')->get();
-            foreach($jugadores as $p){
-                        array_push($arraycartas, array( 'id' =>$p->JGD_ID,
-                            'nombre' => $p->JGD_NOMBRE) );
+            $cartas = Cartas::where('CRT_NOMBRE', 'like', '%'.$nombrecarta.'%')->get();
+            foreach($cartas as $c){
+                        array_push($arraycartas, array( 'id' =>$c->CRT_ID,
+                            'nombre' => "(".$c->EDN_COD_INTERNO.")".$c->CRT_NOMBRE) );
             }
         }else{
             

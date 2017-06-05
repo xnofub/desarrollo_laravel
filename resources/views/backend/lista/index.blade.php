@@ -41,16 +41,25 @@
                     <th>Cantidad</th>
                     <th>Carta</th>
                     <th>Tipo</th>
-                    <th>Editar</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody id="bodytable">
                 @foreach($listaCartas as $l)
                 <tr>
                     <td>{{$l->LST_CANTIDAD}}</td>
-                    <td>{{$l->LST_NOMBRE_CARTA}}</td>
+                    <td>{{$l->ToCartas->CRT_NOMBRE}}</td>
                     <td>{{$l->ToTipoCarta->TCR_NOMBRE}}</td>
-                    <td>{{$l->LST_ID}}</td>
+                    <td> 
+                    <a class="btn btn-default btn-xs btn-default edit" data-toggle="modal" data-target="#myModal" title="Editar" href="{{ url('lista/' . $l->LST_ID . '/edit') }}"> 
+                     <span class="glyphicon glyphicon-search"></span>   
+                    </a>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-xs btn-danger">
+                            <span class="glyphicon glyphicon-minus-sign"></span>
+                        </button>
+                    </td>
                 </tr>
                 @endforeach 
             </tbody>
@@ -60,6 +69,21 @@
     
     
 </div>
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" id="modal_body">
+            <div class="modal-body" >
+                <img src="#" id="crtimg"  />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div> 
 
 
 @endsection
@@ -100,7 +124,7 @@ $( "#NOMBRE" ).keyup(function() {
              
             var selectcbo = $("#ID_CARTA");
             var nombrecarta  = $("#NOMBRE" ).val();
-            var route = "{!!URL::to('/getjugadoresbydci')!!}";
+            var route = "{!!URL::to('/getcartasbyid')!!}";
             var token  = $("input[name*='_token']").val();
             
            if(parseInt(nombrecarta.length) > 3  ){
@@ -108,7 +132,7 @@ $( "#NOMBRE" ).keyup(function() {
                console.log('BUSCAR');
             selectcbo.html("");
             //selectjgd.append("<option value=''>SELECCIONE UN JUGADOR</option>");
-            $.post( route, { nombrecarta: dci , _token : token })
+            $.post( route, { nombrecarta: nombrecarta , _token : token })
             .done(function( data ) {
                 $(data).each(function( index, value ) {
                     selectcbo.append("<option value='"+value.id+"'> "+value.nombre+"</option>");
