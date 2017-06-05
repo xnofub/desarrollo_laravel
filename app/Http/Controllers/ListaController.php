@@ -122,6 +122,13 @@ class ListaController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        
+        $lista  = Lista::find($id);
+        Lista::destroy($id);
+        $arrayCartas  = array();
+        $arrayCartas = $this->getListadoCartas($lista->EVM_ID);
+        return response()->json($arrayCartas);
+        //Lista::destroy($id);
+        
     }
 }
