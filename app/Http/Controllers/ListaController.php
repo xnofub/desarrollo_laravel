@@ -60,7 +60,7 @@ class ListaController extends Controller
 
     
     public static function getListadoCartas($id){
-        $listaCartas = Lista::where('EVM_ID','=',$id)->get();
+        $listaCartas = Lista::where('EVM_ID','=',$id)->orderBy('TCR_ID', 'DESC')->get();
         $arrayCartas  = array();
         foreach($listaCartas as $c){
                 array_push($arrayCartas, array( 
@@ -84,7 +84,7 @@ class ListaController extends Controller
     {
         $tiposcarta = TipoCarta::lists('TCR_NOMBRE','TCR_ID');
         $eventoMazo = EventoMazo::find($id);
-        $listaCartas = Lista::where('EVM_ID','=',$id)->get();
+        $listaCartas = Lista::where('EVM_ID','=',$id)->orderBy('TCR_ID', 'DESC')->get();
         //dd($eventoMazo);
              return view('backend.lista.index', compact('eventoMazo','tiposcarta','listaCartas'));
     }

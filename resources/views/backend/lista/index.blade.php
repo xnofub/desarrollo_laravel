@@ -121,7 +121,7 @@
                                     tabla.append(html);
                                     console.log( value.id + value.nombre );
                                 });
-                                $('#formcarta').trigger("reset");
+                                $('#NOMBRE').val("");
                             },
                             error: function(result) {
                                 alert("Data not found");
