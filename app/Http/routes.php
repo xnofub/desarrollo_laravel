@@ -33,4 +33,6 @@ Route::get('/home', 'HomeController@index');
 Route::resource('lista', 'ListaController');
 Route::resource('getcartasbyid', 'CartasController@getcartasbyid');
 
+
+Route::get('formato/{id}', 'FrontController@getFormato');
 //Route::resource('index', 'PaginaController');

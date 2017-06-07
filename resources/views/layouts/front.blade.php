@@ -35,8 +35,8 @@
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="{!!URL::to('/')!!}">Home</a></li>
-                            <li><a href="{!!URL::to('/modern')!!}">Modern</a></li>
-                            <li><a href="{!!URL::to('/standar')!!}">Standar</a></li>
+                            <li><a href="{!!URL::to('/formato/2')!!}">Modern</a></li>
+                            <li><a href="{!!URL::to('/formato/1')!!}">Standar</a></li>
                             <li><a href="#about">Contacto</a></li>
                             @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
