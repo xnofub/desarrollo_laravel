@@ -71,6 +71,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $('.modal').on('hidden.bs.modal', function () {
+                        $(".modal-body").html("");
                         $(this).removeData('bs.modal');
                 });
             });

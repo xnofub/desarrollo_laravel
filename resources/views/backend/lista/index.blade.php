@@ -77,7 +77,7 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content" id="modal_body">
             <div class="modal-body" >
-                <img src="#" id="crtimg"  />
+                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
