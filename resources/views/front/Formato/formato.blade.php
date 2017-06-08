@@ -31,7 +31,9 @@
                         
                         <div class="col-md-4 portfolio-item">
                             <h3>
-                                <a href="#">{{$e->EVN_NOMBRE}}</a>
+                                
+                                
+                                <a href="{{ url('/evento/'.$e->EVN_ID) }}">{{$e->EVN_NOMBRE}}</a>
                             </h3>
                             <p>
                                     <em>{{$e->EVN_FECHA}}</em>  

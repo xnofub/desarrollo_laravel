@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Eventos;
 use App\Mazos;
+use App\EventoMazo;
 
 class FrontController extends Controller
 {
@@ -90,10 +91,18 @@ class FrontController extends Controller
     }
     
      public function getFormato($id){
-         
-         
          $mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
          $eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
          return view('front.formato.formato', compact('eventos','mazos'));
+     }
+     
+     
+     public function getFormatoMazos($id){
+         $mazos = EventoMazo::where('EVN_ID','=',$id)->orderBy('EVM_POSICION')->get();
+         $primerMazo = array();
+         
+         //$mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
+         //$eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
+         return view('front.formato.evento', compact('eventos','mazos'));
      }
 }
