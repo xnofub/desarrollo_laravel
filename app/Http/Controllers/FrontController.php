@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Eventos;
+use App\Mazos;
 
 class FrontController extends Controller
 {
@@ -88,8 +90,10 @@ class FrontController extends Controller
     }
     
      public function getFormato($id){
-         $mazos  = "";
-         $eventos = "";
+         
+         
+         $mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
+         $eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
          return view('front.formato.formato', compact('eventos','mazos'));
      }
 }
