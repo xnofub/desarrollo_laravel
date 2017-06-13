@@ -37,4 +37,7 @@ Route::resource('getcartasbyid', 'CartasController@getcartasbyid');
 Route::get('formato/{id}', 'FrontController@getFormato');
 Route::get('evento/{id}', 'FrontController@getFormatoMazos');
 Route::get('deck/{id}', 'FrontController@getListadoById');
+
+
+Route::resource('post', 'PostController');
 //Route::resource('index', 'PaginaController');

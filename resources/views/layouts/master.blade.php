@@ -66,6 +66,8 @@
         {!! Html::script('assets/js/jquery.min.js') !!}
         {!! Html::script('assets/js/bootstrap.min.js') !!}
         {!! Html::script('assets/js/bootstrap-datepicker.js') !!}
+        {!! Html::script('vendors/ckeditor/ckeditor.js') !!}
+        
         @yield('js')
         
         <script type="text/javascript">
