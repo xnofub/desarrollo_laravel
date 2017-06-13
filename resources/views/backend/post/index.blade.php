@@ -24,6 +24,8 @@
                 <td> {{$p->PST_ESTADO}}</td>
             </tr>
             <?php //echo $p->PST_TEXTO; ?>
+            
+            {!!$p->PST_TEXTO!!}
              @endforeach 
         </tbody>
     </table>
