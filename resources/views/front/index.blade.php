@@ -106,7 +106,7 @@
             <h4> Ultimos Eventos </h4>
             @foreach($eventos as $e)
             <div class="sidebar-module sidebar-module-inset">
-                <a href="#"> {{$e->EVN_FECHA}} {{$e->ToFormatos->FTO_NOMBRE}}  </a> 
+                <a href="{{ url('/evento/'.$e->EVN_ID) }}"> {{$e->EVN_FECHA}} {{$e->ToFormatos->FTO_NOMBRE}}  </a> 
                 <p>  <em>{{$e->EVN_NOMBRE}}</em> 
                     <br>
                     {{$e->ToTiendas->TND_NOMBRE}}

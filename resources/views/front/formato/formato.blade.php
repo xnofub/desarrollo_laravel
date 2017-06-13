@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title', 'Inicio')
+@section('title', 'Formato')
 @section('content')
 
 <div class="container">
@@ -9,14 +9,7 @@
                 <li class="active">Eventos</li>
                 <li class="active">Formato</li>
             </ol>
-            <div class="col-md-3">
-                <p class="lead">Mazos</p>
-                <div class="list-group">
-                    @foreach($mazos as $m)
-                        <a href="#" class="list-group-item">{{$m->MAZ_NOMBRE}}</a>
-                    @endforeach
-                </div>
-            </div>
+            
 
             <div class="col-md-9">
 
@@ -29,22 +22,23 @@
                         -->
                         @foreach($eventos as $e)
                         
-                        <div class="col-md-4 portfolio-item">
-                            <h3>
-                                
-                                
-                                <a href="{{ url('/evento/'.$e->EVN_ID) }}">{{$e->EVN_NOMBRE}}</a>
-                            </h3>
-                            <p>
+                        <div class="col-md-4 portfolio-item ">
+                            
+                            
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><a href="{{ url('/evento/'.$e->EVN_ID) }}">{{$e->EVN_NOMBRE}}</a></h3>
+                                </div>
+                                <div class="panel-body">
                                     <em>{{$e->EVN_FECHA}}</em>  
                                     <br>
                                     Formato : {{$e->ToFormatos->FTO_NOMBRE}}  </a> 
                                     <br>
                                     Tienda : {{$e->ToTiendas->TND_NOMBRE}}
                                     <br>
-                                    Jugadores : 50
-                                    <br>
-                            </p>
+                                </div>
+                            </div>
+                            
                         </div>
                         
                         @endforeach
@@ -63,7 +57,15 @@
                 
 
             </div>
-
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">Mazos</a>
+                    @foreach($mazos as $m)
+                        
+                        <a href="#" class="list-group-item">{{$m->MAZ_NOMBRE}}</a>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
     </div>

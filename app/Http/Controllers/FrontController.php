@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Eventos;
 use App\Mazos;
 use App\EventoMazo;
+use App\Lista;
+
+
 
 class FrontController extends Controller
 {
@@ -105,4 +108,20 @@ class FrontController extends Controller
          //$eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
          return view('front.formato.evento', compact('eventos','mazos'));
      }
+     
+     public function getListadoById($id){
+         
+         $mazo = EventoMazo::find($id);
+         $listaMain = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
+         $listaSb = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',8)->orderBy('TCR_ID', 'DESC')->get();
+         
+         $countMain = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->sum('LST_CANTIDAD');
+         $countSb = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',8)->sum('LST_CANTIDAD');
+         
+         //$mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
+         //$eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
+         return view('front.formato.lista', compact('mazo','listaMain','listaSb','countMain','countSb'));
+     }
+     
+     
 }
