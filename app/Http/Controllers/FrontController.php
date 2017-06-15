@@ -120,7 +120,7 @@ class FrontController extends Controller
          $listaLands = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',4)->orderBy('TCR_ID', 'DESC')->get();
          $listaInstSor = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',1)->orderBy('TCR_ID', 'DESC')->get();
          $listaOther = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',6)->orderBy('TCR_ID', 'DESC')->get();
-         $listaCriat = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',6)->orderBy('TCR_ID', 'DESC')->get();
+         $listaCriat = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',3)->orderBy('TCR_ID', 'DESC')->get();
          
          
          $listaMain = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
