@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Post')
+@section('title', 'Articulo')
 @section('content')
 
 {!! Form::open(['route' => 'post.store', 'method' => 'POST', 'class' => 'form-horizontal crear','role'=>'form']) !!}
