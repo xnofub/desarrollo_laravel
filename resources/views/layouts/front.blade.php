@@ -37,6 +37,17 @@
                             <li class="active"><a href="{!!URL::to('/')!!}">Home</a></li>
                             <li><a href="{!!URL::to('/formato/2')!!}">Modern</a></li>
                             <li><a href="{!!URL::to('/formato/1')!!}">Standar</a></li>
+                            <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        Publicaciones <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Articulos</a></li>
+                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Noticias</a></li>
+                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Otros</a></li>
+                                    </ul>
+                            </li>
                             <li><a href="#about">Contacto</a></li>
                             @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>

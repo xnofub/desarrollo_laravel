@@ -45,14 +45,12 @@
         
         <div class="col-lg-3 col-sm-4 col-xs-12">
             <div class="list-group">
-                <a href="#" class="list-group-item active"> <h4>Próximos Eventos</h4> </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
+                <a href="#" class="list-group-item active"> <h4>Articulos</h4> </a>
+                @foreach($articulos as $a)
+                    <a href="{{ url('/articulo/'.$a->PST_ID) }}" class="list-group-item">{{$a->PST_TITULO}}</a>
+                @endforeach
+               
+              
             </div>
         </div>   
         

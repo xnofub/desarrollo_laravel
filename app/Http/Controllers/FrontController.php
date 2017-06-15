@@ -104,15 +104,17 @@ class FrontController extends Controller
      public function getFormatoMazos($id){
          $mazos = EventoMazo::where('EVN_ID','=',$id)->orderBy('EVM_POSICION')->get();
          $primerMazo = array();
-         
+         $articulos = Post::where('STP_ID','=',1)->where('TPP_ID','=',1)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS
          //$mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
          //$eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
-         return view('front.formato.evento', compact('eventos','mazos'));
+         return view('front.formato.evento', compact('eventos','mazos','articulos'));
      }
      
      public function getListadoById($id){
          
          $mazo = EventoMazo::find($id);
+         $idevento = $mazo->EVN_ID;
+         $otrosmazos = EventoMazo::where('EVM_ID','!=',$id)->where('EVN_ID','=',$idevento)->orderBy('EVM_POSICION')->get();
          $listaMain = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
          $listaSb = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',8)->orderBy('TCR_ID', 'DESC')->get();
          
@@ -121,7 +123,7 @@ class FrontController extends Controller
          
          //$mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
          //$eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
-         return view('front.formato.lista', compact('mazo','listaMain','listaSb','countMain','countSb'));
+         return view('front.formato.lista', compact('mazo','listaMain','listaSb','countMain','countSb','otrosmazos'));
      }
      
      

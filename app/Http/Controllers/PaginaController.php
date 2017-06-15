@@ -16,10 +16,7 @@ class PaginaController extends Controller
      */
     public function index()
     {
-        //
-        
-    
-        
+        //    
         $post = Post::where('STP_ID','=',1)->where('TPP_ID','=',1)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS
         $noticias = Post::where('STP_ID','=',1)->where('TPP_ID','=',2)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS
         $otros = Post::where('STP_ID','=',1)->where('TPP_ID','=',3)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS

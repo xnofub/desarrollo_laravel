@@ -46,15 +46,10 @@
          <div class="col-lg-4 col-sm-4 col-xs-12">
             
             <div class="list-group">
-                <a href="#" class="list-group-item active"><h4> Próximos Eventos </h4></a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
-                <a href="#" class="list-group-item">Proximo Evento 1 </a>
+                <a href="#" class="list-group-item active"><h4> Mazos Mismo Evento </h4></a>
+                @foreach($otrosmazos as $m)
+                <a href="{{ url('/deck/'.$m->EVM_ID) }}" class="list-group-item">{{$m->EVM_POSICION}} - {{$m->ToMazos->MAZ_NOMBRE}}</a>
+                @endforeach
             </div>
         </div> 
          
