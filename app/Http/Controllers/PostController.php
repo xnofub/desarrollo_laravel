@@ -60,7 +60,7 @@ class PostController extends Controller
         $post->save();
         
         
-        Session::flash('message','Post registrado con exito.');
+        Session::flash('message','Articulo registrado con exito.');
         return redirect::to('/post');       
         
     }
@@ -84,7 +84,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipopost = TipoPost::lists('TPP_NOMBRE','TPP_ID');
+        $post = Post::find($id);
+        $estados = EstadoPost::lists('STP_NOMBRE','STP_ID');
+        return view('backend.post.editar', compact('post','tipopost','estados'));
     }
 
     /**
@@ -97,6 +100,17 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $post = Post::find($id);
+        $post->PST_TITULO = $request->TITULO;
+        $post->PST_FECHA = date("Y-m-d H:m:s");
+        $post->PST_DESCRIPCION = $request->PST_DESCRIPCION;
+        $post->PST_TEXTO = $request->editor1;
+        $post->STP_ID = $request->STP_ID;
+        $post->TPP_ID = $request->TPP_ID;
+        $post->save();
+        
+        Session::flash('message','Articulo editado con exito.');
+        return redirect::to('/post');  
     }
 
     /**

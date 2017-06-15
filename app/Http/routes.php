@@ -40,4 +40,6 @@ Route::get('deck/{id}', 'FrontController@getListadoById');
 
 
 Route::resource('post', 'PostController');
+
+Route::get('articulo/{id}', 'FrontController@getArticuloById');
 //Route::resource('index', 'PaginaController');

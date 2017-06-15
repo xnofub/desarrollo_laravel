@@ -58,6 +58,7 @@ class FrontController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -121,6 +122,13 @@ class FrontController extends Controller
          //$mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
          //$eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
          return view('front.formato.lista', compact('mazo','listaMain','listaSb','countMain','countSb'));
+     }
+     
+     
+     public function getArticuloById($id){
+         
+         $post = Post::find($id);
+         return view('front.formato.articulo', compact('post'));
      }
      
      

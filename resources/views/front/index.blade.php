@@ -44,7 +44,7 @@
                     <p class="blog-post-meta">{{$p->PST_FECHA}}</p>
 
                     <p>{{$p->PST_DESCRIPCION}}.</p>
-                    <p><a href="#"> <em>Lee mas</em> </a></p>
+                    <p><a href="{{ url('/articulo/'.$p->PST_ID) }}"> <em>Lee mas</em> </a></p>
                     
                 </div><!-- /.blog-post -->
                 
