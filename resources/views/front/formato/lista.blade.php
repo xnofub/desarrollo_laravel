@@ -16,7 +16,7 @@
             <ul class="list-group">
                 <li class="list-group-item active"><h4> Maindeck </h4></li>
                 @foreach($listaMain as $l)
-                <li class="list-group-item">
+                <li class="list-group-item list-group-item-info">
                     <b>{{$l->LST_CANTIDAD}}x</b>  
                     <a class="" data-toggle="modal" data-target="#myModal" title="Editar" href="{{ url('lista/' . $l->LST_ID . '/edit') }}"> 
                      {{$l->ToCartas->CRT_NOMBRE}}    
@@ -32,7 +32,7 @@
             <ul class="list-group">
                 <li class="list-group-item active"><h4> Sideboard </h4></li>
             @foreach($listaSb as $l)
-                    <li class="list-group-item">
+                    <li class="list-group-item list-group-item-warning">
                         <b>{{$l->LST_CANTIDAD}}x</b>
                         <a class="" data-toggle="modal" data-target="#myModal" title="Editar" href="{{ url('lista/' . $l->LST_ID . '/edit') }}"> 
                           {{$l->ToCartas->CRT_NOMBRE}} 

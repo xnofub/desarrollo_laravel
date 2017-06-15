@@ -116,6 +116,13 @@ class FrontController extends Controller
          $idevento = $mazo->EVN_ID;
          $otrosmazos = EventoMazo::where('EVM_ID','!=',$id)->where('EVN_ID','=',$idevento)->orderBy('EVM_POSICION')->get();
          $listaMain = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
+         
+         $listaLands = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
+         $listaInstSor = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
+         $listaOther = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
+         
+         
+         
          $listaSb = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',8)->orderBy('TCR_ID', 'DESC')->get();
          
          $countMain = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->sum('LST_CANTIDAD');
