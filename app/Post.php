@@ -14,8 +14,9 @@ class Post extends Model
     protected $fillable = array(
                                 'PST_TITULO',
                                 'PST_FECHA',
+                                'PST_DESCRIPCION',
                                 'PST_TEXTO',
-                                'PST_ESTADO',
+                                'STP_ID',
                                 'TPP_ID',
                                );
     public $timestamps = false;

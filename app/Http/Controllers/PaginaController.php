@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Eventos;
 use App\Http\Requests;
+use App\Post;
 
 class PaginaController extends Controller
 {
@@ -16,13 +17,19 @@ class PaginaController extends Controller
     public function index()
     {
         //
+        
+        $articulos = array();
+        $noticias = array();
+        $otros = array();
+        
+        $post = Post::where('STP_ID','=',1)->orderBy('PST_ID','desc')->paginate(4);
         $eventos = Eventos::orderBy('EVN_ID','desc')->paginate(10);
          foreach ($eventos as $e){
             list($año,$mes,$dia) = explode('-', $e->EVN_FECHA);
             $fecha = $dia.'/'.$mes.'/'.$año;
             $e->EVN_FECHA = $fecha;
         }
-        return view('front.index', compact('eventos'));
+        return view('front.index', compact('eventos','post'));
     }
 
     /**

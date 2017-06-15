@@ -13,6 +13,7 @@
                 <th>Titulo</th>
                 <th>Fecha</th>
                 <th>Estado</th>
+                <th>Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -21,22 +22,15 @@
                 <td> {{$p->PST_ID}}</td>
                 <td> {{$p->PST_TITULO}}</td>
                 <td> {{$p->PST_FECHA}}</td>
-                <td> {{$p->PST_ESTADO}}</td>
+                <td> {{$p->STP_ID}}</td>
+                <td> 
+                    {{link_to_route('post.edit', 'editar', $parameters = $p->PST_ID , $attributes = ['class'=>'btn btn-xs btn-warning'])}}
+                </td>
             </tr>
-            <?php //echo $p->PST_TEXTO; ?>
-            
-            {!!$p->PST_TEXTO!!}
+             
              @endforeach 
         </tbody>
     </table>
-    
-   
-    
-        
-    
-   
-    
-    
     
 </div>
 

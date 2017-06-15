@@ -43,6 +43,7 @@
                             <li><a href="{!!URL::to('/jugadores')!!}">Jugadores</a></li>
                             <li><a href="{!!URL::to('/eventos')!!}">Eventos</a></li>
                             <li><a href="{!!URL::to('/formatos')!!}">Formatos</a></li>
+                            <li><a href="{!!URL::to('/post')!!}">Articulos</a></li>
                             <li><a href="#about">Contacto</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

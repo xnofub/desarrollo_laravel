@@ -9,7 +9,7 @@ use App\Eventos;
 use App\Mazos;
 use App\EventoMazo;
 use App\Lista;
-
+use App\Post;
 
 
 class FrontController extends Controller
