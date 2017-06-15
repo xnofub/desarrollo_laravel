@@ -90,7 +90,7 @@ class EventosMazosController extends Controller
     {
         
         $evento = Eventos::find($id);
-        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        $jugadores = Jugadores::orderBy('JGD_NOMBRE')->lists('JGD_NOMBRE','JGD_ID');
         //dd($evento);
         $participantes = EventoMazo::where('EVN_ID', $id)
                ->orderBy('EVM_POSICION', 'desc')
@@ -108,7 +108,7 @@ class EventosMazosController extends Controller
     public function createbyget($id)
     {
         $evento = Eventos::find($id);
-        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        $jugadores = Jugadores::orderBy('JGD_NOMBRE')->lists('JGD_NOMBRE','JGD_ID');
         $mazos = Mazos::orderBy('MAZ_NOMBRE', 'desc')->lists('MAZ_NOMBRE','MAZ_ID');
         return view('backend.eventosmazos.agregar', compact('evento','jugadores','mazos'));
     }
@@ -130,7 +130,7 @@ class EventosMazosController extends Controller
         
         //dd($eventomazo->ToJugadores->JGD_ID);
         
-        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        $jugadores = Jugadores::orderBy('JGD_NOMBRE')->lists('JGD_NOMBRE','JGD_ID');
         $mazos = Mazos::orderBy('MAZ_NOMBRE', 'desc')->lists('MAZ_NOMBRE','MAZ_ID');
         return view('backend.eventosmazos.editar', compact('eventomazo','evento','jugadores','mazos'));
     }
@@ -143,7 +143,7 @@ class EventosMazosController extends Controller
         $idEvento = $eventomazo->EVN_ID;
         $evento = Eventos::find($idEvento);
         //dd($eventomazo->ToJugadores->JGD_ID);
-        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        $jugadores = Jugadores::orderBy('JGD_NOMBRE')->lists('JGD_NOMBRE','JGD_ID');
         $mazos = Mazos::orderBy('MAZ_NOMBRE', 'desc')->lists('MAZ_NOMBRE','MAZ_ID');
         return view('backend.eventosmazos.editar', compact('eventomazo','evento','jugadores','mazos'));
     }

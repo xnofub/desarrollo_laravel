@@ -18,18 +18,19 @@ class PaginaController extends Controller
     {
         //
         
-        $articulos = array();
-        $noticias = array();
-        $otros = array();
+    
         
-        $post = Post::where('STP_ID','=',1)->orderBy('PST_ID','desc')->paginate(4);
+        $post = Post::where('STP_ID','=',1)->where('TPP_ID','=',1)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS
+        $noticias = Post::where('STP_ID','=',1)->where('TPP_ID','=',2)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS
+        $otros = Post::where('STP_ID','=',1)->where('TPP_ID','=',3)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS
+        
         $eventos = Eventos::orderBy('EVN_ID','desc')->paginate(10);
          foreach ($eventos as $e){
             list($año,$mes,$dia) = explode('-', $e->EVN_FECHA);
             $fecha = $dia.'/'.$mes.'/'.$año;
             $e->EVN_FECHA = $fecha;
         }
-        return view('front.index', compact('eventos','post'));
+        return view('front.index', compact('eventos','noticias','post','otros'));
     }
 
     /**

@@ -28,7 +28,7 @@ class MazosController extends Controller
     public function index()
     {
         //
-        $mazos = Mazos::paginate(10);
+        $mazos = Mazos::orderBy('MAZ_NOMBRE')->paginate(100);
         return view('backend.mazos.index', compact('mazos'));
     }
     
