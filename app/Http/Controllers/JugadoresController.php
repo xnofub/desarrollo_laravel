@@ -26,7 +26,7 @@ class JugadoresController extends Controller
     public function index()
     {
         //
-        $jugadores = Jugadores::paginate(10);
+        $jugadores = Jugadores::orderBy('JGD_NOMBRE')->paginate(100);
         return view('backend.jugadores.index', compact('jugadores'));
     }
 

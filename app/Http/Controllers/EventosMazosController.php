@@ -50,7 +50,7 @@ class EventosMazosController extends Controller
          * 
          */
         $evento = Eventos::find(1);
-        $jugadores = Jugadores::lists('JGD_NOMBRE','JGD_ID');
+        $jugadores = Jugadores::orderBy('JGD_NOMBRE')->lists('JGD_NOMBRE','JGD_ID');
         return view('backend.eventosmazos.agregar', compact('evento','jugadores'));
     }
     
