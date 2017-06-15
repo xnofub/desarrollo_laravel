@@ -21,14 +21,14 @@
         <div  class="col-lg-12">
             {!! Form::label('PST_DESCRIPCION', 'Descripción', array('class' => 'col-lg-3')) !!}
             <div class="col-lg-9">
-                 <textarea  name="PST_DESCRIPCION" id="PST_DESCRIPCION" rows="10" cols="80" class="form-control">{{$post->PST_DESCRIPCION}}</textarea>
+                 <textarea  name="PST_DESCRIPCION" id="PST_DESCRIPCION" rows="10" cols="80" class="form-control">{{isset($post->PST_DESCRIPCION) ? $post->PST_DESCRIPCION : ''}}</textarea>
             </div>
         </div>
         
     </div>
     <div class="row">
         <div class="col-md-12 col-lg-12">
-                    <textarea  name="editor1" id="editor1" rows="10" cols="80" class="ckeditor">{!!$post->PST_TEXTO!!}</textarea>
+                    <textarea  name="editor1" id="editor1" rows="10" cols="80" class="ckeditor">{{isset($post->PST_TEXTO) ? $post->PST_TEXTO : ''}}</textarea>
         </div>
     </div>
 </div>
