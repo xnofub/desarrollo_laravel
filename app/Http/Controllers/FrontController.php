@@ -115,14 +115,15 @@ class FrontController extends Controller
          $mazo = EventoMazo::find($id);
          $idevento = $mazo->EVN_ID;
          $otrosmazos = EventoMazo::where('EVM_ID','!=',$id)->where('EVN_ID','=',$idevento)->orderBy('EVM_POSICION')->get();
+         
+         
+         $listaLands = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',4)->orderBy('TCR_ID', 'DESC')->get();
+         $listaInstSor = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',1)->orderBy('TCR_ID', 'DESC')->get();
+         $listaOther = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',6)->orderBy('TCR_ID', 'DESC')->get();
+         $listaCriat = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',6)->orderBy('TCR_ID', 'DESC')->get();
+         
+         
          $listaMain = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
-         
-         $listaLands = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
-         $listaInstSor = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
-         $listaOther = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->orderBy('TCR_ID', 'DESC')->get();
-         
-         
-         
          $listaSb = Lista::where('EVM_ID','=',$id)->where('TCR_ID','=',8)->orderBy('TCR_ID', 'DESC')->get();
          
          $countMain = Lista::where('EVM_ID','=',$id)->where('TCR_ID','!=',8)->sum('LST_CANTIDAD');
@@ -130,7 +131,7 @@ class FrontController extends Controller
          
          //$mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
          //$eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
-         return view('front.formato.lista', compact('mazo','listaMain','listaSb','countMain','countSb','otrosmazos'));
+         return view('front.formato.lista', compact('mazo','listaMain','listaSb','countMain','countSb','otrosmazos','listaLands','listaInstSor','listaOther','listaCriat'));
      }
      
      
