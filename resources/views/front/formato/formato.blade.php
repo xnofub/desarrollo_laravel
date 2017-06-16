@@ -53,17 +53,18 @@
                     </div>
                     
                 </div>
-
-                
-
             </div>
             <div class="col-md-3">
                 <div class="list-group">
                     <a href="#" class="list-group-item active">Mazos</a>
-                    @foreach($mazos as $m)
-                        
-                        <a href="#" class="list-group-item">{{$m->MAZ_NOMBRE}}</a>
-                    @endforeach
+                        <table class="table">
+                            @foreach($mazos as $m)
+                             <tr class="list-group-item">
+                                 <td> <b><em>{{$m->PORCENTAJE}}%</em></b> </td>
+                                <td > <a href="#" class="">{{$m->MAZ_NOMBRE}} </a></td>
+                            </tr>
+                            @endforeach
+                        </table>
                 </div>
             </div>
         </div>

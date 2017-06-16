@@ -10,6 +10,7 @@ use App\Mazos;
 use App\EventoMazo;
 use App\Lista;
 use App\Post;
+use Illuminate\Support\Facades\DB;
 
 
 class FrontController extends Controller
@@ -95,7 +96,24 @@ class FrontController extends Controller
     }
     
      public function getFormato($id){
-         $mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
+         
+         //$count = EventoMazo::select('MAZ_ID')->groupBy('MAZ_ID'); DEVUELBE EL PRIMER RESULTADO
+         /*$count = EventoMazo::select('MAZ_ID', \DB::raw("count(MAZ_ID) as TOTAL"))->groupBy('MAZ_ID')->get();
+         foreach ($count as $c){
+             echo $c->ToMazos->MAZ_NOMBRE."".$c->TOTAL."<br>";
+         }*/
+         //$mazos  = Mazos::where('FTO_ID','=',$id)->orderBy('MAZ_NOMBRE','desc')->get();
+         $mazos = DB::select('SELECT COUNT(1) AS TOTAL
+                                , e.`MAZ_ID`
+                                , CAST((COUNT(1) / (SELECT COUNT(*) FROM eventosmazos )) *100  AS DECIMAL(10,2)) AS PORCENTAJE
+                                , m.`MAZ_NOMBRE`
+                                FROM `eventosmazos` e
+                                INNER JOIN `eventos` ev ON ev.EVN_ID = e.EVN_ID
+                                INNER JOIN `mazos` m ON m.`MAZ_ID` = e.`MAZ_ID`
+                                WHERE ev.`FTO_ID` = :id
+                                GROUP BY e.`MAZ_ID`', ['id' => $id]);
+                  
+         
          $eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
          return view('front.formato.formato', compact('eventos','mazos'));
      }
@@ -136,7 +154,12 @@ class FrontController extends Controller
      
      
      public function getArticuloById($id){
-         
+         $post = Post::find($id);
+         return view('front.formato.articulo', compact('post'));
+     }
+     
+     
+     public function getDeckByMazo($id){
          $post = Post::find($id);
          return view('front.formato.articulo', compact('post'));
      }
