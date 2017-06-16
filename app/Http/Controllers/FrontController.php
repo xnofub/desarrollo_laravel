@@ -13,6 +13,7 @@ use App\Post;
 use Illuminate\Support\Facades\DB;
 
 
+
 class FrontController extends Controller
 {
     /**
@@ -160,8 +161,19 @@ class FrontController extends Controller
      
      
      public function getDeckByMazo($id){
-         $post = Post::find($id);
-         return view('front.formato.articulo', compact('post'));
+         $fto_id  = Mazos::find($id)->FTO_ID;
+         $otherdecks = DB::select('SELECT COUNT(1) AS TOTAL
+                                , e.`MAZ_ID`
+                                , CAST((COUNT(1) / (SELECT COUNT(*) FROM eventosmazos )) *100  AS DECIMAL(10,2)) AS PORCENTAJE
+                                , m.`MAZ_NOMBRE`
+                                FROM `eventosmazos` e
+                                INNER JOIN `eventos` ev ON ev.EVN_ID = e.EVN_ID
+                                INNER JOIN `mazos` m ON m.`MAZ_ID` = e.`MAZ_ID`
+                                WHERE ev.`FTO_ID` = :id
+                                GROUP BY e.`MAZ_ID` ORDER BY PORCENTAJE DESC ', ['id' => $fto_id]);
+         
+         $mazos =  EventoMazo::where('MAZ_ID','!=',$id)->orderBy('EVM_ID','DESC')->paginate(10);
+         return view('front.formato.decks', compact('mazos','otherdecks','id'));
      }
      
      
