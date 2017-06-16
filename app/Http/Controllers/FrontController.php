@@ -172,7 +172,8 @@ class FrontController extends Controller
                                 WHERE ev.`FTO_ID` = :id
                                 GROUP BY e.`MAZ_ID` ORDER BY PORCENTAJE DESC ', ['id' => $fto_id]);
          
-         $mazos =  EventoMazo::where('MAZ_ID','!=',$id)->orderBy('EVM_ID','DESC')->paginate(10);
+         $mazos =  EventoMazo::where('MAZ_ID','=',$id)->orderBy('EVM_ID','DESC')->paginate(10);
+         
          return view('front.formato.decks', compact('mazos','otherdecks','id'));
      }
      
