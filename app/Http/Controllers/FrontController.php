@@ -111,7 +111,7 @@ class FrontController extends Controller
                                 INNER JOIN `eventos` ev ON ev.EVN_ID = e.EVN_ID
                                 INNER JOIN `mazos` m ON m.`MAZ_ID` = e.`MAZ_ID`
                                 WHERE ev.`FTO_ID` = :id
-                                GROUP BY e.`MAZ_ID`', ['id' => $id]);
+                                GROUP BY e.`MAZ_ID` ORDER BY PORCENTAJE DESC ', ['id' => $id]);
                   
          
          $eventos = Eventos::where('FTO_ID','=',$id)->orderBy('EVN_ID','desc')->paginate(12);
