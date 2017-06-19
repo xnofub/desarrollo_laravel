@@ -7,6 +7,8 @@
 
         <div class="col-lg-12"> 
             <ol class="breadcrumb"> 
+                <li> Eventos </li>
+                <li> Formatos </li>
                 <li> {{$mazo->EVM_POSICION}}</li>
                 <li> {{$mazo->EVM_NOMBRE_MAZO}}</li>
                 <li> {{$mazo->ToJugadores->JGD_NOMBRE}}</li>
@@ -22,9 +24,26 @@
             </div>
         </div> 
         <div class="col-lg-8 col-sm-8 col-xs-12">
+            @if (count($listaSb) > 0)
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <ul class="list-group">
+                    <li class="list-group-item active"><h4> Banquillo </h4></li>
+                    @foreach($listaSb as $l)
+                    <li class="list-group-item list-group-item-warning">
+                        <b>{{$l->LST_CANTIDAD}}x</b>
+                        <a class="" data-toggle="modal" data-target="#myModal" title="Editar" href="{{ url('lista/' . $l->LST_ID . '/edit') }}"> 
+                            {{$l->ToCartas->CRT_NOMBRE}} 
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+
+            </div> 
+            @endif
+            
             
             @if (count($listaLands) > 0)
-                <div class="col-lg-4 col-sm-4 col-xs-12">
+                <div class="col-lg-6 col-sm-6 col-xs-12">
                     <ul class="list-group">
                         <li class="list-group-item active"><h4> Tierras </h4></li>
                         @foreach($listaLands as $l)
@@ -40,8 +59,9 @@
                 </div>  
             @endif
             
+            
             @if (count($listaCriat) > 0)
-            <div class="col-lg-4 col-sm-4 col-xs-12">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul class="list-group">
                     <li class="list-group-item active"><h4> Criaturas </h4></li>
                     @foreach($listaCriat as $l)
@@ -58,7 +78,7 @@
             @endif
             
             @if (count($listaInstSor) > 0)
-            <div class="col-lg-4 col-sm-4 col-xs-12">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul class="list-group">
                     <li class="list-group-item active"><h4> Inst. y Conjuros </h4></li>
                     @foreach($listaInstSor as $l)
@@ -75,7 +95,7 @@
             @endif
             
             @if (count($listaOther) > 0)
-            <div class="col-lg-4 col-sm-4 col-xs-12">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul class="list-group">
                     <li class="list-group-item active"><h4> Otros </h4></li>
                     @foreach($listaOther as $l)
@@ -92,22 +112,7 @@
             @endif
 
 
-            @if (count($listaSb) > 0)
-            <div class="col-lg-4 col-sm-4 col-xs-12">
-                <ul class="list-group">
-                    <li class="list-group-item active"><h4> Banquillo </h4></li>
-                    @foreach($listaSb as $l)
-                    <li class="list-group-item list-group-item-warning">
-                        <b>{{$l->LST_CANTIDAD}}x</b>
-                        <a class="" data-toggle="modal" data-target="#myModal" title="Editar" href="{{ url('lista/' . $l->LST_ID . '/edit') }}"> 
-                            {{$l->ToCartas->CRT_NOMBRE}} 
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-
-            </div> 
-            @endif
+            
         </div>
 
 

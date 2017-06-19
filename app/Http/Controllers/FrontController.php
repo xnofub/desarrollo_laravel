@@ -155,8 +155,11 @@ class FrontController extends Controller
      
      
      public function getArticuloById($id){
-         $post = Post::find($id);
-         return view('front.formato.articulo', compact('post'));
+        $post = Post::find($id);
+        $noticias = Post::where('STP_ID','=',1)->where('TPP_ID','=',2)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS
+        $otros = Post::where('STP_ID','=',1)->where('TPP_ID','=',3)->orderBy('PST_ID','desc')->paginate(10);//ARTICULOS
+         
+         return view('front.formato.articulo', compact('post','noticias','otros'));
      }
      
      
@@ -175,6 +178,21 @@ class FrontController extends Controller
          $mazos =  EventoMazo::where('MAZ_ID','=',$id)->orderBy('EVM_ID','DESC')->paginate(10);
          
          return view('front.formato.decks', compact('mazos','otherdecks','id'));
+     }
+     
+     
+     
+     public function getPublicacionByTipo($id){
+         
+         
+         $eventos = Eventos::orderBy('EVN_ID','desc')->paginate(10);
+         foreach ($eventos as $e){
+            list($año,$mes,$dia) = explode('-', $e->EVN_FECHA);
+            $fecha = $dia.'/'.$mes.'/'.$año;
+            $e->EVN_FECHA = $fecha;
+        }
+         $post = Post::where('TPP_ID','=',$id)->orderBy('PST_ID','DESC')->paginate(10);
+         return view('front.formato.publicaciones', compact('post','eventos'));
      }
      
      

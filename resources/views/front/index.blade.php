@@ -87,7 +87,7 @@
         </div><!-- /.blog-main -->
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-            <div class="well">
+            <!-- <div class="well">
                     <h4>Articulo/Noticia/Evento </h4>
                     <div class="input-group">
                         <input type="text" class="form-control">
@@ -97,14 +97,11 @@
                         </button>
                         </span>
                     </div>
-                    <!-- /.input-group -->
+                    
                 </div>
-            
+            -->
             <h4> Ultimos Eventos </h4>
             @foreach($eventos as $e)
-            
-            
-            
             <div class="sidebar-module sidebar-module-inset">
                 <a href="{{ url('/evento/'.$e->EVN_ID) }}"> {{$e->EVN_FECHA}} {{$e->ToFormatos->FTO_NOMBRE}}  </a> 
                 <p>  <em>{{$e->EVN_NOMBRE}}</em> 

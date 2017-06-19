@@ -30,22 +30,22 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">DM</a>
+                        <a class="navbar-brand" href="{!!URL::to('/')!!}">FT</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="{!!URL::to('/')!!}">Home</a></li>
-                            <li><a href="{!!URL::to('/formato/2')!!}">Modern</a></li>
-                            <li><a href="{!!URL::to('/formato/1')!!}">Standar</a></li>
+                            <li><a href="{!!URL::to('/formato/2')!!}">Moderno</a></li>
+                            <li><a href="{!!URL::to('/formato/1')!!}">Estandar</a></li>
                             <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         Publicaciones <span class="caret"></span>
                                     </a>
 
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Articulos</a></li>
-                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Noticias</a></li>
-                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Otros</a></li>
+                                        <li><a href="{{ url('/publicaciones/1') }}"><i class="fa fa-btn fa-sign-out"></i>Articulos</a></li>
+                                        <li><a href="{{ url('/publicaciones/2') }}"><i class="fa fa-btn fa-sign-out"></i>Noticias</a></li>
+                                        <li><a href="{{ url('/publicaciones/3') }}"><i class="fa fa-btn fa-sign-out"></i>Otros</a></li>
                                     </ul>
                             </li>
                             <li><a href="#about">Contacto</a></li>
@@ -74,7 +74,7 @@
         </div>
         <footer class="footer">
             <div class="container">
-                <p class="text-muted">Place sticky footer content here.</p>
+                <p class="text-muted"><b>EQUIPO FETCHTUTOR</b></p>
             </div>
         </footer>
         <!-- Scripts -->
