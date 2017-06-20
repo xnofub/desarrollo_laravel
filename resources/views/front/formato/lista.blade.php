@@ -17,7 +17,7 @@
 
         <div class="col-lg-4 col-sm-4 col-xs-12">
             <div class="list-group">
-                <a href="#" class="list-group-item active"><h4> Mazos Mismo Evento </h4></a>
+                <a href="#" class="list-group-item active"><h4> Mazos Mismo Evento  </h4></a>
                 @foreach($otrosmazos as $m)
                 <a href="{{ url('/deck/'.$m->EVM_ID) }}" class="list-group-item">{{$m->EVM_POSICION}} - {{$m->ToMazos->MAZ_NOMBRE}}</a>
                 @endforeach
@@ -27,7 +27,7 @@
             @if (count($listaSb) > 0)
             <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul class="list-group">
-                    <li class="list-group-item active"><h4> Banquillo </h4></li>
+                    <li class="list-group-item active"><h4> Banquillo <em>{{$countSb}}</em></h4></li>
                     @foreach($listaSb as $l)
                     <li class="list-group-item list-group-item-warning">
                         <b>{{$l->LST_CANTIDAD}}x</b>
@@ -45,7 +45,7 @@
             @if (count($listaLands) > 0)
                 <div class="col-lg-6 col-sm-6 col-xs-12">
                     <ul class="list-group">
-                        <li class="list-group-item active"><h4> Tierras </h4></li>
+                        <li class="list-group-item active"><h4> Tierras <em>{{$countLands}}</em></h4></li>
                         @foreach($listaLands as $l)
                         <li class="list-group-item list-group-item-info">
                             <b>{{$l->LST_CANTIDAD}}x</b>  
@@ -63,7 +63,7 @@
             @if (count($listaCriat) > 0)
             <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul class="list-group">
-                    <li class="list-group-item active"><h4> Criaturas </h4></li>
+                    <li class="list-group-item active"><h4> Criaturas <em>{{$countCriat }}</em> </h4></li>
                     @foreach($listaCriat as $l)
                     <li class="list-group-item list-group-item-info">
                         <b>{{$l->LST_CANTIDAD}}x</b>  
@@ -80,7 +80,7 @@
             @if (count($listaInstSor) > 0)
             <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul class="list-group">
-                    <li class="list-group-item active"><h4> Inst. y Conjuros </h4></li>
+                    <li class="list-group-item active"><h4> Inst. y Conjuros <em>{{$countInstSor}}</em></h4></li>
                     @foreach($listaInstSor as $l)
                     <li class="list-group-item list-group-item-info">
                         <b>{{$l->LST_CANTIDAD}}x</b>  
@@ -97,7 +97,7 @@
             @if (count($listaOther) > 0)
             <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul class="list-group">
-                    <li class="list-group-item active"><h4> Otros </h4></li>
+                    <li class="list-group-item active"><h4> Otros  <em>{{$countOther}}</em></h4></li>
                     @foreach($listaOther as $l)
                     <li class="list-group-item list-group-item-info">
                         <b>{{$l->LST_CANTIDAD}}x</b>  
