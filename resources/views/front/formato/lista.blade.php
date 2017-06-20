@@ -10,7 +10,7 @@
                 <li> Eventos </li>
                 <li> Formatos </li>
                 <li> {{$mazo->EVM_POSICION}}</li>
-                <li> {{$mazo->EVM_NOMBRE_MAZO}}</li>
+                <li> {{$mazo->EVM_NOMBRE_MAZO}} (MAIN: {{$countMain}}  SB:{{$countSb}})</li>
                 <li> {{$mazo->ToJugadores->JGD_NOMBRE}}</li>
             </ol>
         </div>
@@ -24,6 +24,7 @@
             </div>
         </div> 
         <div class="col-lg-8 col-sm-8 col-xs-12">
+            
             @if (count($listaSb) > 0)
             <div class="col-lg-6 col-sm-6 col-xs-12">
                 <ul class="list-group">
