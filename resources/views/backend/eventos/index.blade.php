@@ -4,6 +4,14 @@
 
 @include('layouts.flash')
 
+@if(isset($errors))
+    @foreach( $errors as $e )
+    <div class="alert alert-danger"> {{$e}} </div>
+    @endforeach
+@endif
+
+
+
 {{link_to_route('eventos.create', 'Agregar', $parameters = null , $attributes = ['class'=>'btn btn-success'])}}
 <div class="table-responsive">
 <table class="table table-striped table-hover">

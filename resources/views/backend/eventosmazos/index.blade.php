@@ -3,6 +3,14 @@
 @section('content')
 
 @include('layouts.flash')
+@if(isset($errors))
+    @foreach( $errors as $e )
+    <div class="alert alert-danger"> {{$e}} </div>
+    @endforeach
+@endif
+
+
+@include('layouts.flash')
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12">
     <a class="btn btn-success btn_ok" data-toggle="modal" data-target="#myModal" href="{!! URL::to('participantes/scoreparticipantes/'.$evento->EVN_ID) !!}">Agregar</a>

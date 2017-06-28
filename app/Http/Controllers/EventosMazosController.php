@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Eventos;
 use App\Jugadores;
 use \App\Mazos;
+use App\Lista;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -181,9 +182,15 @@ class EventosMazosController extends Controller
         $idEvn = $request->EVN_ID;
         $idEvm = $request->EVM_ID;
         
-        $eventomazo = EventoMazo::destroy($idEvm);
-        Session::flash('message','Registro eliminado correctamente');
-        return redirect::to('/participantes/'.$idEvn);  
+        $e = Lista::where('EVM_ID','=',$idEvm)->get()->count();
+        
+        if($e = 0){
+            $eventomazo = EventoMazo::destroy($idEvm);
+            Session::flash('message','Registro eliminado correctamente');
+            return redirect::to('/participantes/'.$idEvn);  
+        }else{
+            return redirect::to('/participantes/'.$idEvn);  
+        }
         //
     }
   

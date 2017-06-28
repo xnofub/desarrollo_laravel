@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Formatos;
 use App\Tiendas;
 use App\Eventos;
+use App\EventoMazo;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -139,9 +140,16 @@ class EventosController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $jugador = Eventos::destroy($id);
-        Session::flash('message','Evento a sido borrado con exito.');
-        return redirect::to('/eventos'); 
+        $e = EventoMazo::where('EVN_ID','=',$id)->get()->count();
+        if($e = 0){
+            $destroy = Eventos::destroy($id);
+            Session::flash('message','Evento a sido borrado con exito.');
+            return redirect::to('/eventos');
+        }else{
+            $eventos = Eventos::orderBy('EVN_ID','desc')->paginate(10);
+            $errors = ['error' => 'no es posible eliminar este evento'];
+            return view('backend.eventos.index', compact('errors','eventos'));
+        }
+        
     }
 }
