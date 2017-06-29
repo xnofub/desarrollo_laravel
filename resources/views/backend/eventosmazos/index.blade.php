@@ -2,7 +2,7 @@
 @section('title', 'Eventos')
 @section('content')
 
-@include('layouts.flash')
+
 @if(isset($errors))
     @foreach( $errors as $e )
     <div class="alert alert-danger"> {{$e}} </div>
