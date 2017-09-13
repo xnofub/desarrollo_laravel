@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ediciones extends Model
+class Ediciones extends Model
 {
     //
 }
